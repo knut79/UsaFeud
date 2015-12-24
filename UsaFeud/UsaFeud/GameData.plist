@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>DeviceToken</key>
+	<string></string>
+	<key>UseKm</key>
+	<integer>1</integer>
+	<key>TimeBonus</key>
+	<integer>1</integer>
+	<key>Hints</key>
+	<integer>8</integer>
+	<key>GameResults</key>
+	<array/>
+	<key>AdFree</key>
+	<integer>0</integer>
+	<key>Tags</key>
+	<string></string>
+	<key>Level</key>
+	<integer>1</integer>
+	<key>LoveScore</key>
+	<integer>0</integer>
+	<key>GoodScore</key>
+	<integer>0</integer>
+	<key>OkScore</key>
+	<integer>0</integer>
+	<key>EventsUpdate</key>
+	<date>2015-08-02T15:57:33Z</date>
+	<key>DataPopulated</key>
+	<integer>0</integer>
+	<key>XInitializerItem</key>
+	<string>DoNotEverChangeMe</string>
+</dict>
+</plist>
