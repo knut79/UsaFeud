@@ -73,12 +73,12 @@ class MapScrollView:UIView, UIScrollViewDelegate  {
     
         tileContainerView.frame = CGRectMake(0, 0, mapWith, mapHeight)
         
-        let image = UIImage(named: "ArrowGreen.png")
+        let image = UIImage(named: GlobalConstants.playerSymbolName)
         playerSymbol = UIImageView(image:image)
         playerSymbol.alpha = 0
         
         
-        
+        setupTileMatrixPool()
         setupTiles()
         
         
@@ -95,6 +95,8 @@ class MapScrollView:UIView, UIScrollViewDelegate  {
         scrollView.zoomScale = minScale
         
         self.addSubview(scrollView)
+        
+        
         
     }
 
@@ -119,7 +121,7 @@ class MapScrollView:UIView, UIScrollViewDelegate  {
         
         playerSymbol.removeFromSuperview()
         playerSymbol.alpha = 1
-        setPlayerIcon()
+        //setPlayerIcon()
 
     }
     
@@ -275,8 +277,24 @@ class MapScrollView:UIView, UIScrollViewDelegate  {
         overlayDrawView?.setNeedsDisplay()
     }
     
+    var tileMatrixPool = Array<Array<CALayer>>()
+    
+    func setupTileMatrixPool()
+    {
+        let maxRow:Int = Int(ceil(GlobalConstants.constMapHeight / maxTileSize))
+        let maxColumn:Int = Int(ceil(GlobalConstants.constMapWidth / maxTileSize))
+        
+        for _ in 0..<maxRow {
+            tileMatrixPool.append(Array(count:maxColumn, repeatedValue:CALayer()))
+        }
+    }
     func setupTiles()
     {
+     
+
+        //self.scrollView.contentOffset = CGPointZero
+        //self.scrollView.contentInset = UIEdgeInsetsZero
+        
         playerSymbol.removeFromSuperview()
         
         if tileContainerView.layer.sublayers?.count > 0
@@ -289,20 +307,32 @@ class MapScrollView:UIView, UIScrollViewDelegate  {
         
         // The resolution is stored as a power of 2, so -1 means 50%, -2 means 25%, and 0 means 100%.
         let resolutionPercentage = 100 * pow(Double(2), Double(resolution))
-        print("resolution : \(resolutionPercentage)")
+        //print("resolution : \(resolutionPercentage)")
         let mapWith:CGFloat =  GlobalConstants.constMapWidth * (CGFloat(resolutionPercentage) / 100.0)
         let mapHeight:CGFloat =  GlobalConstants.constMapHeight * (CGFloat(resolutionPercentage) / 100.0)
 
-        //tileContainerView.frame = CGRectMake(0, 0, mapWith, mapHeight)
+        
+        
+        let shownMinRow = Int(floor((scrollView.contentOffset.y / scrollView.zoomScale) / maxTileSize))
+        let shownMinColumn = Int(floor((scrollView.contentOffset.x / scrollView.zoomScale) / maxTileSize))
+
+        let scaledTileSize = maxTileSize * scrollView.zoomScale
+        let shownMaxRow:Int = shownMinRow + Int(ceil(UIScreen.mainScreen().bounds.height / scaledTileSize))
+        let shownMaxColumn:Int = shownMinColumn + Int(ceil(UIScreen.mainScreen().bounds.width / scaledTileSize))
+        
+        let minRow = 0
+        let minColumn = 0
         let maxRow:Int = Int(ceil(mapHeight / maxTileSize))
         let maxColumn:Int = Int(ceil(mapWith / maxTileSize))
-        for var row = 0 ; row < maxRow ; row++
+        
+
+        for var row = minRow ; row < maxRow ; row++
         {
-            for var col = -1 ; col <= maxColumn ; col++
+            for var col = minColumn ; col < maxColumn ; col++
             {
-                let pictureCol = col < 0 ? maxColumn - 1 : (col % maxColumn)
                 let borderFix = drawBorders ? "border_" : ""
-                let imageName = "world_\(Int(resolutionPercentage))_\(borderFix)\(pictureCol)_\(row).jpg"
+                //let imageName = "usa_\(Int(resolutionPercentage))_\(borderFix)\(pictureCol)_\(row).jpg"
+                let imageName = "usa_\(Int(resolutionPercentage))_\(borderFix)\(col)_\(row).jpg"
                 
                 let tileImage = UIImage(named: imageName)
 
@@ -312,8 +342,17 @@ class MapScrollView:UIView, UIScrollViewDelegate  {
                     layer.frame = CGRectMake(CGFloat(col) * maxTileSize, CGFloat(row) * maxTileSize, image.size.width, image.size.height)
                     layer.contents = tileImage?.CGImage
                     layer.contentsGravity = kCAGravityCenter
-                    
-                    tileContainerView.layer.addSublayer(layer)
+                    layer.hidden = true
+                    if row <= shownMaxRow && row >= shownMinRow
+                    {
+                        if col <= shownMaxColumn && col >= shownMinColumn
+                        {
+                            layer.hidden = false
+                            tileContainerView.layer.addSublayer(layer)
+                        }
+                    }
+
+                    tileMatrixPool[row][col] = layer
                     
                     //let tileImageView = UIImageView(image:image)
                     //tileImageView.frame = CGRectMake(CGFloat(col) * maxTileSize, CGFloat(row) * maxTileSize, image.size.width, image.size.height)
@@ -326,6 +365,10 @@ class MapScrollView:UIView, UIScrollViewDelegate  {
             }
         }
 
+        
+        //TODO ... if in resultmode
+        //{
+        
         overlayDrawView = TileContainerOverlayLayer()
         overlayDrawView!.frame = CGRectMake(0, 0, mapWith, mapHeight)
         overlayDrawView!.contentsGravity = kCAGravityCenter
@@ -341,9 +384,11 @@ class MapScrollView:UIView, UIScrollViewDelegate  {
         
         overlayDrawView!.setNeedsDisplay()
         
-        setPlayerIcon()
+        //setPlayerIcon()
+        //}
 
     }
+    
     
     
     override func layoutSubviews() {
@@ -448,6 +493,60 @@ class MapScrollView:UIView, UIScrollViewDelegate  {
     }
     
     func scrollViewDidScroll(scrollView: UIScrollView) {
+        
+        let resolutionPercentage = 100 * pow(Double(2), Double(resolution))
+        print("resolution : \(resolutionPercentage)")
+        let mapWith:CGFloat =  GlobalConstants.constMapWidth * (CGFloat(resolutionPercentage) / 100.0)
+        let mapHeight:CGFloat =  GlobalConstants.constMapHeight * (CGFloat(resolutionPercentage) / 100.0)
+
+        
+        
+        let shownMinRow = Int(floor((scrollView.contentOffset.y / scrollView.zoomScale) / maxTileSize))
+        let shownMinColumn = Int(floor((scrollView.contentOffset.x / scrollView.zoomScale) / maxTileSize))
+        
+        let scaledTileSize = maxTileSize * scrollView.zoomScale
+        let shownMaxRow:Int = shownMinRow + Int(ceil(UIScreen.mainScreen().bounds.height / scaledTileSize))
+        let shownMaxColumn:Int = shownMinColumn + Int(ceil(UIScreen.mainScreen().bounds.width / scaledTileSize))
+        
+        let minRow = 0
+        let minColumn = 0
+        let maxRow:Int = Int(ceil(mapHeight / maxTileSize))
+        let maxColumn:Int = Int(ceil(mapWith / maxTileSize))
+        for var row = minRow ; row < maxRow ; row++
+        {
+            for var col = minColumn ; col < maxColumn ; col++
+            {
+
+                if tileMatrixPool.count > row
+                {
+                    if tileMatrixPool[row].count > col
+                    {
+                        let layer = tileMatrixPool[row][col]
+                        
+                        if row <= shownMaxRow && row >= shownMinRow && col <= shownMaxColumn && col >= shownMinColumn
+                        {
+
+                            if layer.hidden
+                            {
+                                tileContainerView.layer.addSublayer(layer)
+                                layer.hidden = false
+                            }
+                        }
+                        else
+                        {
+                            layer.removeFromSuperlayer()
+                            layer.hidden = true
+                        }
+                    }
+                }
+               
+            }
+        }
+        overlayDrawView?.removeFromSuperlayer()
+        
+        tileContainerView.layer.addSublayer(overlayDrawView!)
+        
+        //tileContainerView.bringSubviewToFront(playerSymbol)
         
     }
     

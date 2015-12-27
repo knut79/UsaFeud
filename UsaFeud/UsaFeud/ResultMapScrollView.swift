@@ -65,7 +65,7 @@ class ResultMapScrollView:UIView, UIScrollViewDelegate  {
         
         
 
-        print("resolution : \(resolutionPercentage)")
+        //print("resolution : \(resolutionPercentage)")
 
         overlayDrawView = ContainerOverlayLayer()
         overlayDrawView!.frame = CGRectMake(0, 0, mapWith, mapHeight)

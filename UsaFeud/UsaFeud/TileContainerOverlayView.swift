@@ -17,8 +17,10 @@ class TileContainerOverlayLayer: CALayer {
     
     override init() {
         super.init()
+        playerSymbol = UIImage(named: GlobalConstants.playerSymbolName)
     }
     
+    var playerSymbol:UIImage!
     var fromPoint:CGPoint?
     var toPoint:CGPoint?
     var regions:[[LinePoint]] = []
@@ -60,6 +62,9 @@ class TileContainerOverlayLayer: CALayer {
         if fromPoint != nil && toPoint != nil
         {
             drawLine(ctx)
+            //drawPlayerSymbol(ctx)
+            //save before setting mask so we can draw upon mask after drawing places
+            CGContextSaveGState(ctx)
         }
 
         if regions.count == 1 && regions[0].count == 1
@@ -68,7 +73,7 @@ class TileContainerOverlayLayer: CALayer {
         }
         else
         {
-
+            
             drawMask(ctx)
             drawPlace(ctx)
             /*
@@ -78,7 +83,42 @@ class TileContainerOverlayLayer: CALayer {
             drawPlace(ctx,scaleAll:  1.25)
             */
         }
+        
+        
+        if fromPoint != nil && toPoint != nil
+        {
+            CGContextRestoreGState (ctx)
+            drawPlayerSymbol(ctx)
+        }
+
+        
         self.shouldRasterize = true
+    }
+    
+    func drawPlayerSymbol(context:CGContext)
+    {
+        
+        
+        
+        //CGContextDrawImage(context, CGRectMake(fromPoint!.x - (side / 2),fromPoint!.y - (side / 2), side, side), playerSymbol.CGImage)
+        
+        let side = UIScreen.mainScreen().bounds.width * 0.2
+        UIGraphicsPushContext(context)
+        //playerSymbol?.drawAtPoint(CGPointMake(fromPoint!.x, fromPoint!.y))
+        playerSymbol?.drawInRect(CGRectMake(fromPoint!.x * (resolutionPercentage / 100.0) - (side / 2),fromPoint!.y * (resolutionPercentage / 100.0) - (side / 2), side, side))
+        UIGraphicsPopContext()
+        
+        print("Drawing player symbol \(resolutionPercentage)")
+        /*
+        var c:CGContextRef = UIGraphicsGetCurrentContext()!
+        image?.drawInRect(CGRectMake(fromPoint!.x,fromPoint!.y, side, side))
+
+        var contextImage:CGImageRef = CGBitmapContextCreateImage(c)!
+        var resultingImage = UIImage imageWithCGImage:contextImage]
+        imgView.image=resultingImage;
+        CGImageRelease(contextImage);
+*/
+            
     }
     
     func clearDrawing()

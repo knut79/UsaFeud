@@ -13,10 +13,10 @@
         <attribute name="includePlaces" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="info" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="refid" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="refId" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="type" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
-        <relationship name="points" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="LinePoint" inverseName="place" inverseEntity="LinePoint" syncable="YES"/>
-        <relationship name="questions" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Question" inverseName="place" inverseEntity="Question" syncable="YES"/>
+        <relationship name="points" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="LinePoint" inverseName="place" inverseEntity="LinePoint" syncable="YES"/>
+        <relationship name="questions" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Question" inverseName="place" inverseEntity="Question" syncable="YES"/>
     </entity>
     <entity name="Question" representedClassName="UsaFeud.Question" syncable="YES">
         <attribute name="answerTemplate" optional="YES" attributeType="String" syncable="YES"/>

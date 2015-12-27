@@ -29,7 +29,7 @@ class DataHandler
         questionItems = []
     }
     
-    func readTxtFile(name:String, tags:String = "")
+    func readTxtFile(name:String, tags:String = "", lowresFactor:CGFloat = 1.0)
     {
         
         if let path = NSBundle.mainBundle().pathForResource(name, ofType: "txt"){
@@ -167,8 +167,8 @@ class DataHandler
                         }
                         else
                         {
-                            let x = CGFloat((elements[0] as NSString).floatValue)
-                            let y = CGFloat((elements[1] as NSString).floatValue)
+                            let x = CGFloat((elements[0] as NSString).floatValue) * lowresFactor
+                            let y = CGFloat((elements[1] as NSString).floatValue) * lowresFactor
                             lines.append(CGPointMake( x,  y ))
                             
                         }
@@ -280,7 +280,8 @@ class DataHandler
     
     func populateData(completePopulating: (() -> (Void))?)
     {
-        
+        readTxtFile("lakes",tags: "#state", lowresFactor: 2.0)
+        /*
         readTxtFile("statesAfrica",tags: "#africa")
         readTxtFile("statesAsia",tags: "#asia")
         readTxtFile("statesEastAsia",tags: "#asia")
@@ -301,6 +302,7 @@ class DataHandler
         readTxtFile("places")
         readTxtFile("islands",tags: "#island")
         readTxtFile("cities",tags: "#city")
+        */
 
 
         //savePeriodesFromCollection(dataToPopulate)

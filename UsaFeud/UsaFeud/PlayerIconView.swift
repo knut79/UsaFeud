@@ -24,7 +24,7 @@ class PlayerIconView: UIView {
         //self.backgroundColor = UIColor.whiteColor()
         
         
-        let image = UIImage(named: "ArrowGreen.png")
+        let image = UIImage(named: GlobalConstants.playerSymbolName)
         imageView = UIImageView(image:image)
         imageView.frame = self.bounds
         

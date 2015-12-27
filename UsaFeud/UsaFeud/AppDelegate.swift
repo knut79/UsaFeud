@@ -8,16 +8,125 @@
 
 import UIKit
 import CoreData
+import FBSDKCoreKit
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
+    var datactrl:DataHandler!
+    var client: MSClient?
+    var reportErrorHandler: ReportErrorHandler?
 
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         // Override point for customization after application launch.
-        return true
+        NSUserDefaults.standardUserDefaults().setBool(true, forKey: "firstlaunch")
+        datactrl = DataHandler()
+        
+        application.statusBarHidden = true
+        self.client = MSClient(applicationURLString:"https://usafeud.azure-mobile.net/",
+            applicationKey:"LTuGBKOjoRUSSbxMkpZigBrlrXXGRL87")
+        
+        reportErrorHandler = ReportErrorHandler()
+        //EngagementAgent.init("Endpoint=MapFeud-Collection.device.mobileengagement.windows.net;SdkKey=a975562ee9d61925ca20b4183c9c3a7f;AppId=nem000036")
+        
+        //[UIUserNotificationType.Sound, UIUserNotificationType.Alert, UIUserNotificationType.Badge]
+        let settings = UIUserNotificationSettings(forTypes: [UIUserNotificationType.Sound, UIUserNotificationType.Alert, UIUserNotificationType.Badge], categories:nil)
+        UIApplication.sharedApplication().registerUserNotificationSettings(settings)
+        UIApplication.sharedApplication().registerForRemoteNotifications()
+        
+        return FBSDKApplicationDelegate.sharedInstance().application(application, didFinishLaunchingWithOptions: launchOptions)
+    }
+    
+    func application(application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: NSData) {
+        
+        print("The token is \(deviceToken)")
+        
+        //var deviceTokenString:NSString = deviceToken.description.stringByTrimmingCharactersInSet(NSCharacterSet(charactersInString: "<>"))
+        //deviceTokenString = deviceTokenString.stringByReplacingOccurrencesOfString(" ", withString: "").uppercaseString
+        var deviceTokenString:NSString = deviceToken.description.stringByTrimmingCharactersInSet(NSCharacterSet(charactersInString: "<>"))
+        deviceTokenString = deviceTokenString.stringByReplacingOccurrencesOfString(" ", withString: "").uppercaseString
+        
+        let hub = SBNotificationHub.init(connectionString: HUBLISTENACCESS, notificationHubPath: HUBNAME)
+        
+        NSUserDefaults.standardUserDefaults().setValue(deviceTokenString, forKey: "deviceToken")
+        datactrl.deviceTokenValue = deviceTokenString
+        datactrl.saveGameData()
+        
+        let tags: Set<NSObject> = Set([deviceTokenString])
+        hub.registerNativeWithDeviceToken(deviceToken, tags: tags, completion: {(error) -> Void in
+            
+            if error != nil
+            {
+                print("Error registering for notifications: \(error)")
+            }
+            else
+            {
+                print("Registered for notifications")
+            }
+            
+        })
+        
+    }
+    
+    func application(application: UIApplication,
+        openURL url: NSURL,
+        sourceApplication: String?,
+        annotation: AnyObject) -> Bool {
+            return FBSDKApplicationDelegate.sharedInstance().application(
+                application,
+                openURL: url,
+                sourceApplication: sourceApplication,
+                annotation: annotation)
+    }
+    
+    
+    func application(application: UIApplication, didReceiveRemoteNotification userInfo: [NSObject : AnyObject]) {
+        
+        
+        var badge:Int = 0
+        if let aps = userInfo["aps"] as? NSDictionary {
+            if let b = aps["badge"] as? Int {
+                badge = b
+            }
+            
+            if let alert = aps["alert"] as? NSDictionary {
+                if let title = alert["title"] as? NSString {
+                    
+                    if title == "Challenge"
+                    {
+                        NSUserDefaults.standardUserDefaults().setInteger(badge, forKey: "challengesBadge")
+                        
+                    }
+                    if title == "Result"
+                    {
+                        NSUserDefaults.standardUserDefaults().setInteger(badge, forKey: "resultsBadge")
+                    }
+                }
+            }
+            
+            
+            
+            /*else if let alert = aps["alert"] as? NSString {
+            print(alert)
+            }*/
+        }
+        
+        /*
+        if let info = userInfo["aps"] as? Dictionary<String, AnyObject>
+        {
+        let alertMsg = info["alert"] as! String
+        var alert: UIAlertView!
+        alert = UIAlertView(title: "", message: alertMsg, delegate: nil, cancelButtonTitle: "OK")
+        alert.show()
+        }
+        */
+        
+    }
+    
+    func application(application: UIApplication, didFailToRegisterForRemoteNotificationsWithError error: NSError) {
+        //NSUserDefaults.standardUserDefaults().setValue("", forKey: "deviceToken")
     }
 
     func applicationWillResignActive(application: UIApplication) {
@@ -35,7 +144,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
 
     func applicationDidBecomeActive(application: UIApplication) {
-        // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
+        // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.        
+        UIApplication.sharedApplication().applicationIconBadgeNumber = 0
+        
+        FBSDKAppEvents.activateApp()
+    }
+    
+    func application(application: UIApplication, supportedInterfaceOrientationsForWindow window: UIWindow?) -> UIInterfaceOrientationMask {
+        return UIInterfaceOrientationMask.Portrait
     }
 
     func applicationWillTerminate(application: UIApplication) {
@@ -58,6 +174,37 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         return NSManagedObjectModel(contentsOfURL: modelURL)!
     }()
 
+    
+    lazy var persistentStoreCoordinator: NSPersistentStoreCoordinator = {
+        // The persistent store coordinator for the application. This implementation creates and returns a coordinator, having added the store for the application to it. This property is optional since there are legitimate error conditions that could cause the creation of the store to fail.
+        // Create the coordinator and store
+        let coordinator = NSPersistentStoreCoordinator(managedObjectModel: self.managedObjectModel)
+        let url = self.applicationDocumentsDirectory.URLByAppendingPathComponent("SingleViewCoreData.sqlite")
+        var failureReason = "There was an error creating or loading the application's saved data."
+        let options = [
+            NSMigratePersistentStoresAutomaticallyOption: true,
+            NSInferMappingModelAutomaticallyOption: true]
+        do {
+            try coordinator.addPersistentStoreWithType(NSSQLiteStoreType, configuration: nil, URL: url, options: options)
+        } catch var error1 as NSError {
+            // Report any error we got.
+            var dict = [String: AnyObject]()
+            dict[NSLocalizedDescriptionKey] = "Failed to initialize the application's saved data"
+            dict[NSLocalizedFailureReasonErrorKey] = failureReason
+            
+            dict[NSUnderlyingErrorKey] = error1
+            let wrappedError = NSError(domain: "YOUR_ERROR_DOMAIN", code: 9999, userInfo: dict)
+            // Replace this with code to handle the error appropriately.
+            // abort() causes the application to generate a crash log and terminate. You should not use this function in a shipping application, although it may be useful during development.
+            NSLog("Unresolved error \(wrappedError), \(wrappedError.userInfo)")
+            abort()
+        }catch {
+            fatalError()
+        }
+        
+        return coordinator
+    }()
+    /*
     lazy var persistentStoreCoordinator: NSPersistentStoreCoordinator = {
         // The persistent store coordinator for the application. This implementation creates and returns a coordinator, having added the store for the application to it. This property is optional since there are legitimate error conditions that could cause the creation of the store to fail.
         // Create the coordinator and store
@@ -66,13 +213,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         var failureReason = "There was an error creating or loading the application's saved data."
         do {
             try coordinator.addPersistentStoreWithType(NSSQLiteStoreType, configuration: nil, URL: url, options: nil)
-        } catch {
+        } catch var error1 as NSError {
             // Report any error we got.
             var dict = [String: AnyObject]()
             dict[NSLocalizedDescriptionKey] = "Failed to initialize the application's saved data"
             dict[NSLocalizedFailureReasonErrorKey] = failureReason
 
-            dict[NSUnderlyingErrorKey] = error as NSError
+            dict[NSUnderlyingErrorKey] = error1
+            
             let wrappedError = NSError(domain: "YOUR_ERROR_DOMAIN", code: 9999, userInfo: dict)
             // Replace this with code to handle the error appropriately.
             // abort() causes the application to generate a crash log and terminate. You should not use this function in a shipping application, although it may be useful during development.
@@ -82,6 +230,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         return coordinator
     }()
+    */
 
     lazy var managedObjectContext: NSManagedObjectContext = {
         // Returns the managed object context for the application (which is already bound to the persistent store coordinator for the application.) This property is optional since there are legitimate error conditions that could cause the creation of the context to fail.
@@ -103,6 +252,17 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 let nserror = error as NSError
                 NSLog("Unresolved error \(nserror), \(nserror.userInfo)")
                 abort()
+            }
+        }
+    }
+    
+    func backgroundThread(delay: Double = 0.0, background: (() -> Void)? = nil, completion: (() -> Void)? = nil) {
+        dispatch_async(dispatch_get_global_queue(Int(QOS_CLASS_USER_INITIATED.rawValue), 0)) {
+            if(background != nil){ background!(); }
+            
+            let popTime = dispatch_time(DISPATCH_TIME_NOW, Int64(delay * Double(NSEC_PER_SEC)))
+            dispatch_after(popTime, dispatch_get_main_queue()) {
+                if(completion != nil){ completion!(); }
             }
         }
     }
