@@ -40,7 +40,7 @@ import UIKit
 
 
 struct GlobalConstants {
-    static let constMapHeight:CGFloat = 3600
+    static let constMapHeight:CGFloat = 3980
     static let constMapWidth:CGFloat = 5000
     
     static let minLevel:Int = 1
@@ -58,7 +58,8 @@ struct GlobalConstants {
     static let indexOfOpponentNameInGamerecordRow = 1
     static let indexOfOpponentIdInGamerecordRow = 5
     
-    static let playerSymbolName = "crosshair.png"
+    static let playerSymbolName = "crosshair4.png"
+    static let playerSymbolNameInMagnify = "crosshair.png"
 }
 
 

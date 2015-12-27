@@ -36,7 +36,7 @@ class MagnifyingGlassView: UIView {
         self.mapToMagnify = nil
         self.scaleAtTouchPoint = true
         
-        let image = UIImage(named: GlobalConstants.playerSymbolName)
+        let image = UIImage(named: GlobalConstants.playerSymbolNameInMagnify)
         let playerSymbol = UIImageView(image:image)
         playerSymbol.center = self.center
         playerSymbol.transform = CGAffineTransformMakeScale(0.1, 0.1)
