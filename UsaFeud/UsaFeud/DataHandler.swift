@@ -31,7 +31,7 @@ class DataHandler
     
     func readTxtFile(name:String, tags:String = "", lowresFactor:CGFloat = 1.0)
     {
-        
+        let coordinateHelper = CoordinateHelper()
         if let path = NSBundle.mainBundle().pathForResource(name, ofType: "txt"){
             do{
             let data = try String(contentsOfFile:path, encoding: NSUTF8StringEncoding)
@@ -42,6 +42,11 @@ class DataHandler
                 for textline in myStrings
                 {
                     
+                    if textline == ""
+                    {
+                        print("waring! empty line read from \(name).txt")
+                        continue
+                    }
                     
                     let elements = textline.componentsSeparatedByString(";")
 
@@ -149,6 +154,9 @@ class DataHandler
                             }
                             else
                             {
+                                
+                                
+                                
                                 for var i = 0 ; i < lines.count; i++
                                 {
                                     let linePoint = LinePoint.createInManagedObjectContext(self.managedObjectContext, point: lines[i],sort:i)
@@ -167,9 +175,18 @@ class DataHandler
                         }
                         else
                         {
+
                             let x = CGFloat((elements[0] as NSString).floatValue) * lowresFactor
                             let y = CGFloat((elements[1] as NSString).floatValue) * lowresFactor
-                            lines.append(CGPointMake( x,  y ))
+                            let newPoint = CGPointMake( x,  y )
+                            if lines.count > 0
+                            {
+                                
+                                fillInGaps(newPoint, lines:&lines,coordinateHelper: coordinateHelper)
+                                
+
+                            }
+                            lines.append(newPoint)
                             
                         }
                     
@@ -181,6 +198,23 @@ class DataHandler
             catch
             {
                 print(error)
+            }
+        }
+    }
+    
+    func fillInGaps(newPoint:CGPoint,inout lines:[CGPoint],coordinateHelper:CoordinateHelper)
+    {
+        if let lastLinePoint = lines.last
+        {
+            //insert exstra linepoint to fill in huge gaps
+            
+            let distance = coordinateHelper.getDistanceInKm(newPoint,point2: CGPointMake(lastLinePoint.x,lastLinePoint.y))
+            if distance > GlobalConstants.maxKmBetweenLinePoints
+            {
+                let halfwaypoint = coordinateHelper.halfwayPoint(newPoint, point2: CGPointMake(lastLinePoint.x,lastLinePoint.y))
+                lines.append(halfwaypoint)
+                
+                fillInGaps(newPoint, lines:&lines,coordinateHelper: coordinateHelper)
             }
         }
     }
@@ -280,7 +314,7 @@ class DataHandler
     
     func populateData(completePopulating: (() -> (Void))?)
     {
-        readTxtFile("lakes",tags: "#state", lowresFactor: 2.0)
+        readTxtFile("statesLowRes",tags: "#state", lowresFactor: 2.0)
         /*
         readTxtFile("statesAfrica",tags: "#africa")
         readTxtFile("statesAsia",tags: "#asia")

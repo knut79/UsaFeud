@@ -148,7 +148,7 @@ class CoordinateHelper {
     
     
     
-    func getDistanceInKm(point1:CGPoint, point2:CGPoint?, placeType:PlaceType) -> Int
+    func getDistanceInKm(point1:CGPoint, point2:CGPoint?, placeType:PlaceType = PlaceType.County) -> Int
     {
         //float distance = [self GetDistance:point1 andPoint2:point2] ;
         if let toPoint = point2
@@ -179,6 +179,11 @@ class CoordinateHelper {
         {
             return 0
         }
+    }
+    
+    func halfwayPoint(point1: CGPoint, point2:CGPoint) -> CGPoint
+    {
+        return CGPointMake((point1.x + point2.x) / 2, (point1.y + point2.y) / 2)
     }
     
     

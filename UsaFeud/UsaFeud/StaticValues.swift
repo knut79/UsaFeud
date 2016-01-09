@@ -60,6 +60,8 @@ struct GlobalConstants {
     
     static let playerSymbolName = "crosshair4.png"
     static let playerSymbolNameInMagnify = "crosshair.png"
+    
+    static let maxKmBetweenLinePoints = 400
 }
 
 

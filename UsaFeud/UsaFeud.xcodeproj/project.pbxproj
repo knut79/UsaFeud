@@ -71,8 +71,8 @@
 		720A8D461C2B89E200A53B87 /* ReportErrorHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 720A8D451C2B89E200A53B87 /* ReportErrorHandler.swift */; };
 		720A8D481C2B89F900A53B87 /* StaticValues.swift in Sources */ = {isa = PBXBuildFile; fileRef = 720A8D471C2B89F900A53B87 /* StaticValues.swift */; };
 		723DA0701C2E453B004CAA3B /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 723DA06F1C2E453B004CAA3B /* StoreKit.framework */; };
-		723DA0721C2E4A3D004CAA3B /* statesBackup.txt in Resources */ = {isa = PBXBuildFile; fileRef = 723DA0711C2E4A3D004CAA3B /* statesBackup.txt */; };
-		723DA0741C2E4ABE004CAA3B /* states.txt in Resources */ = {isa = PBXBuildFile; fileRef = 723DA0731C2E4ABE004CAA3B /* states.txt */; };
+		723DA0721C2E4A3D004CAA3B /* statesBackup_lowRes.txt in Resources */ = {isa = PBXBuildFile; fileRef = 723DA0711C2E4A3D004CAA3B /* statesBackup_lowRes.txt */; };
+		723DA0741C2E4ABE004CAA3B /* statesLowRes.txt in Resources */ = {isa = PBXBuildFile; fileRef = 723DA0731C2E4ABE004CAA3B /* statesLowRes.txt */; };
 		723DA0781C2E52C1004CAA3B /* lakes.txt in Resources */ = {isa = PBXBuildFile; fileRef = 723DA0771C2E52C1004CAA3B /* lakes.txt */; };
 		723DA08E1C2F6F21004CAA3B /* crosshair.png in Resources */ = {isa = PBXBuildFile; fileRef = 723DA08D1C2F6F21004CAA3B /* crosshair.png */; };
 		723DA0901C2F6F39004CAA3B /* crosshair23.png in Resources */ = {isa = PBXBuildFile; fileRef = 723DA08F1C2F6F39004CAA3B /* crosshair23.png */; };
@@ -505,6 +505,57 @@
 		723DA3E91C302872004CAA3B /* usa_100_19_14.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 723DA2A91C302872004CAA3B /* usa_100_19_14.jpg */; };
 		723DA3EA1C302872004CAA3B /* usa_100_19_15.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 723DA2AA1C302872004CAA3B /* usa_100_19_15.jpg */; };
 		723DA3EC1C3029E1004CAA3B /* crosshair3.png in Resources */ = {isa = PBXBuildFile; fileRef = 723DA3EB1C3029E1004CAA3B /* crosshair3.png */; };
+		723DA3F41C401429004CAA3B /* statesBackup_normalRes.txt in Resources */ = {isa = PBXBuildFile; fileRef = 723DA3F31C401429004CAA3B /* statesBackup_normalRes.txt */; };
+		723DA4271C4017E3004CAA3B /* AlabamaFlag.png in Resources */ = {isa = PBXBuildFile; fileRef = 723DA3F51C4017E3004CAA3B /* AlabamaFlag.png */; };
+		723DA4281C4017E3004CAA3B /* AlaskaFlag.png in Resources */ = {isa = PBXBuildFile; fileRef = 723DA3F61C4017E3004CAA3B /* AlaskaFlag.png */; };
+		723DA4291C4017E3004CAA3B /* ArizonaFlag.png in Resources */ = {isa = PBXBuildFile; fileRef = 723DA3F71C4017E3004CAA3B /* ArizonaFlag.png */; };
+		723DA42A1C4017E3004CAA3B /* ArkansasFlag.png in Resources */ = {isa = PBXBuildFile; fileRef = 723DA3F81C4017E3004CAA3B /* ArkansasFlag.png */; };
+		723DA42B1C4017E3004CAA3B /* CaliforniaFlag.png in Resources */ = {isa = PBXBuildFile; fileRef = 723DA3F91C4017E3004CAA3B /* CaliforniaFlag.png */; };
+		723DA42C1C4017E3004CAA3B /* ColoradoFlag.png in Resources */ = {isa = PBXBuildFile; fileRef = 723DA3FA1C4017E3004CAA3B /* ColoradoFlag.png */; };
+		723DA42D1C4017E3004CAA3B /* ConnecticutFlag.png in Resources */ = {isa = PBXBuildFile; fileRef = 723DA3FB1C4017E3004CAA3B /* ConnecticutFlag.png */; };
+		723DA42E1C4017E3004CAA3B /* DelawareFlag.png in Resources */ = {isa = PBXBuildFile; fileRef = 723DA3FC1C4017E3004CAA3B /* DelawareFlag.png */; };
+		723DA42F1C4017E3004CAA3B /* FloridaFlag.png in Resources */ = {isa = PBXBuildFile; fileRef = 723DA3FD1C4017E3004CAA3B /* FloridaFlag.png */; };
+		723DA4301C4017E3004CAA3B /* GeorgiaFlag.png in Resources */ = {isa = PBXBuildFile; fileRef = 723DA3FE1C4017E3004CAA3B /* GeorgiaFlag.png */; };
+		723DA4311C4017E3004CAA3B /* HawaiiFlag.png in Resources */ = {isa = PBXBuildFile; fileRef = 723DA3FF1C4017E3004CAA3B /* HawaiiFlag.png */; };
+		723DA4321C4017E3004CAA3B /* IdahoFlag.png in Resources */ = {isa = PBXBuildFile; fileRef = 723DA4001C4017E3004CAA3B /* IdahoFlag.png */; };
+		723DA4331C4017E3004CAA3B /* IllinoisFlag.png in Resources */ = {isa = PBXBuildFile; fileRef = 723DA4011C4017E3004CAA3B /* IllinoisFlag.png */; };
+		723DA4341C4017E3004CAA3B /* IndianaFlag.png in Resources */ = {isa = PBXBuildFile; fileRef = 723DA4021C4017E3004CAA3B /* IndianaFlag.png */; };
+		723DA4351C4017E3004CAA3B /* IowaFlag.png in Resources */ = {isa = PBXBuildFile; fileRef = 723DA4031C4017E3004CAA3B /* IowaFlag.png */; };
+		723DA4361C4017E3004CAA3B /* KansasFlag.png in Resources */ = {isa = PBXBuildFile; fileRef = 723DA4041C4017E3004CAA3B /* KansasFlag.png */; };
+		723DA4371C4017E3004CAA3B /* KentuckyFlag.png in Resources */ = {isa = PBXBuildFile; fileRef = 723DA4051C4017E3004CAA3B /* KentuckyFlag.png */; };
+		723DA4381C4017E3004CAA3B /* LouisianaFlag.png in Resources */ = {isa = PBXBuildFile; fileRef = 723DA4061C4017E3004CAA3B /* LouisianaFlag.png */; };
+		723DA4391C4017E3004CAA3B /* MaineFlag.png in Resources */ = {isa = PBXBuildFile; fileRef = 723DA4071C4017E3004CAA3B /* MaineFlag.png */; };
+		723DA43A1C4017E3004CAA3B /* MarylandFlag.png in Resources */ = {isa = PBXBuildFile; fileRef = 723DA4081C4017E3004CAA3B /* MarylandFlag.png */; };
+		723DA43B1C4017E3004CAA3B /* MassachusettsFlag.png in Resources */ = {isa = PBXBuildFile; fileRef = 723DA4091C4017E3004CAA3B /* MassachusettsFlag.png */; };
+		723DA43C1C4017E3004CAA3B /* MichiganFlag.png in Resources */ = {isa = PBXBuildFile; fileRef = 723DA40A1C4017E3004CAA3B /* MichiganFlag.png */; };
+		723DA43D1C4017E3004CAA3B /* MinnesotaFlag.png in Resources */ = {isa = PBXBuildFile; fileRef = 723DA40B1C4017E3004CAA3B /* MinnesotaFlag.png */; };
+		723DA43E1C4017E3004CAA3B /* MississippiFlag.png in Resources */ = {isa = PBXBuildFile; fileRef = 723DA40C1C4017E3004CAA3B /* MississippiFlag.png */; };
+		723DA43F1C4017E3004CAA3B /* MissouriFlag.png in Resources */ = {isa = PBXBuildFile; fileRef = 723DA40D1C4017E3004CAA3B /* MissouriFlag.png */; };
+		723DA4401C4017E3004CAA3B /* MontanaFlag.png in Resources */ = {isa = PBXBuildFile; fileRef = 723DA40E1C4017E3004CAA3B /* MontanaFlag.png */; };
+		723DA4411C4017E3004CAA3B /* NebraskaFlag.png in Resources */ = {isa = PBXBuildFile; fileRef = 723DA40F1C4017E3004CAA3B /* NebraskaFlag.png */; };
+		723DA4421C4017E3004CAA3B /* NevadaFlag.png in Resources */ = {isa = PBXBuildFile; fileRef = 723DA4101C4017E3004CAA3B /* NevadaFlag.png */; };
+		723DA4431C4017E3004CAA3B /* NewHampshireFlag.png in Resources */ = {isa = PBXBuildFile; fileRef = 723DA4111C4017E3004CAA3B /* NewHampshireFlag.png */; };
+		723DA4441C4017E3004CAA3B /* NewJerseyFlag.png in Resources */ = {isa = PBXBuildFile; fileRef = 723DA4121C4017E3004CAA3B /* NewJerseyFlag.png */; };
+		723DA4451C4017E3004CAA3B /* NewMexicoFlag.png in Resources */ = {isa = PBXBuildFile; fileRef = 723DA4131C4017E3004CAA3B /* NewMexicoFlag.png */; };
+		723DA4461C4017E3004CAA3B /* NewYorkFlag.png in Resources */ = {isa = PBXBuildFile; fileRef = 723DA4141C4017E3004CAA3B /* NewYorkFlag.png */; };
+		723DA4471C4017E3004CAA3B /* NorthCarolinaFlag.png in Resources */ = {isa = PBXBuildFile; fileRef = 723DA4151C4017E3004CAA3B /* NorthCarolinaFlag.png */; };
+		723DA4481C4017E3004CAA3B /* NorthDakotaFlag.png in Resources */ = {isa = PBXBuildFile; fileRef = 723DA4161C4017E3004CAA3B /* NorthDakotaFlag.png */; };
+		723DA4491C4017E3004CAA3B /* OhioFlag.png in Resources */ = {isa = PBXBuildFile; fileRef = 723DA4171C4017E3004CAA3B /* OhioFlag.png */; };
+		723DA44A1C4017E3004CAA3B /* OklahomaFlag.png in Resources */ = {isa = PBXBuildFile; fileRef = 723DA4181C4017E3004CAA3B /* OklahomaFlag.png */; };
+		723DA44B1C4017E3004CAA3B /* OregonFlag.png in Resources */ = {isa = PBXBuildFile; fileRef = 723DA4191C4017E3004CAA3B /* OregonFlag.png */; };
+		723DA44C1C4017E3004CAA3B /* PennsylvaniaFlag.png in Resources */ = {isa = PBXBuildFile; fileRef = 723DA41A1C4017E3004CAA3B /* PennsylvaniaFlag.png */; };
+		723DA44D1C4017E3004CAA3B /* RhodeIslandFlag.png in Resources */ = {isa = PBXBuildFile; fileRef = 723DA41B1C4017E3004CAA3B /* RhodeIslandFlag.png */; };
+		723DA44E1C4017E3004CAA3B /* South_CarolinaFlag.png in Resources */ = {isa = PBXBuildFile; fileRef = 723DA41C1C4017E3004CAA3B /* South_CarolinaFlag.png */; };
+		723DA44F1C4017E3004CAA3B /* SouthDakotaFlag.png in Resources */ = {isa = PBXBuildFile; fileRef = 723DA41D1C4017E3004CAA3B /* SouthDakotaFlag.png */; };
+		723DA4501C4017E3004CAA3B /* TennesseeFlag.png in Resources */ = {isa = PBXBuildFile; fileRef = 723DA41E1C4017E3004CAA3B /* TennesseeFlag.png */; };
+		723DA4511C4017E3004CAA3B /* TexasFlag.png in Resources */ = {isa = PBXBuildFile; fileRef = 723DA41F1C4017E3004CAA3B /* TexasFlag.png */; };
+		723DA4521C4017E3004CAA3B /* UtahFlag.png in Resources */ = {isa = PBXBuildFile; fileRef = 723DA4201C4017E3004CAA3B /* UtahFlag.png */; };
+		723DA4531C4017E3004CAA3B /* VermontFlag.png in Resources */ = {isa = PBXBuildFile; fileRef = 723DA4211C4017E3004CAA3B /* VermontFlag.png */; };
+		723DA4541C4017E3004CAA3B /* VirginiaFlag.png in Resources */ = {isa = PBXBuildFile; fileRef = 723DA4221C4017E3004CAA3B /* VirginiaFlag.png */; };
+		723DA4551C4017E3004CAA3B /* WashingtonFlag.png in Resources */ = {isa = PBXBuildFile; fileRef = 723DA4231C4017E3004CAA3B /* WashingtonFlag.png */; };
+		723DA4561C4017E3004CAA3B /* WestVirginiaFlag.png in Resources */ = {isa = PBXBuildFile; fileRef = 723DA4241C4017E3004CAA3B /* WestVirginiaFlag.png */; };
+		723DA4571C4017E3004CAA3B /* WisconsinFlag.png in Resources */ = {isa = PBXBuildFile; fileRef = 723DA4251C4017E3004CAA3B /* WisconsinFlag.png */; };
+		723DA4581C4017E3004CAA3B /* WyomingFlag.png in Resources */ = {isa = PBXBuildFile; fileRef = 723DA4261C4017E3004CAA3B /* WyomingFlag.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -575,8 +626,8 @@
 		720A8D451C2B89E200A53B87 /* ReportErrorHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReportErrorHandler.swift; sourceTree = "<group>"; };
 		720A8D471C2B89F900A53B87 /* StaticValues.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StaticValues.swift; sourceTree = "<group>"; };
 		723DA06F1C2E453B004CAA3B /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
-		723DA0711C2E4A3D004CAA3B /* statesBackup.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = statesBackup.txt; sourceTree = "<group>"; };
-		723DA0731C2E4ABE004CAA3B /* states.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = states.txt; sourceTree = "<group>"; };
+		723DA0711C2E4A3D004CAA3B /* statesBackup_lowRes.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = statesBackup_lowRes.txt; sourceTree = "<group>"; };
+		723DA0731C2E4ABE004CAA3B /* statesLowRes.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = statesLowRes.txt; sourceTree = "<group>"; };
 		723DA0771C2E52C1004CAA3B /* lakes.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = lakes.txt; sourceTree = "<group>"; };
 		723DA08D1C2F6F21004CAA3B /* crosshair.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = crosshair.png; sourceTree = "<group>"; };
 		723DA08F1C2F6F39004CAA3B /* crosshair23.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = crosshair23.png; sourceTree = "<group>"; };
@@ -1009,6 +1060,57 @@
 		723DA2A91C302872004CAA3B /* usa_100_19_14.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = usa_100_19_14.jpg; sourceTree = "<group>"; };
 		723DA2AA1C302872004CAA3B /* usa_100_19_15.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = usa_100_19_15.jpg; sourceTree = "<group>"; };
 		723DA3EB1C3029E1004CAA3B /* crosshair3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = crosshair3.png; sourceTree = "<group>"; };
+		723DA3F31C401429004CAA3B /* statesBackup_normalRes.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = statesBackup_normalRes.txt; sourceTree = "<group>"; };
+		723DA3F51C4017E3004CAA3B /* AlabamaFlag.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = AlabamaFlag.png; sourceTree = "<group>"; };
+		723DA3F61C4017E3004CAA3B /* AlaskaFlag.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = AlaskaFlag.png; sourceTree = "<group>"; };
+		723DA3F71C4017E3004CAA3B /* ArizonaFlag.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ArizonaFlag.png; sourceTree = "<group>"; };
+		723DA3F81C4017E3004CAA3B /* ArkansasFlag.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ArkansasFlag.png; sourceTree = "<group>"; };
+		723DA3F91C4017E3004CAA3B /* CaliforniaFlag.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = CaliforniaFlag.png; sourceTree = "<group>"; };
+		723DA3FA1C4017E3004CAA3B /* ColoradoFlag.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ColoradoFlag.png; sourceTree = "<group>"; };
+		723DA3FB1C4017E3004CAA3B /* ConnecticutFlag.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ConnecticutFlag.png; sourceTree = "<group>"; };
+		723DA3FC1C4017E3004CAA3B /* DelawareFlag.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = DelawareFlag.png; sourceTree = "<group>"; };
+		723DA3FD1C4017E3004CAA3B /* FloridaFlag.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = FloridaFlag.png; sourceTree = "<group>"; };
+		723DA3FE1C4017E3004CAA3B /* GeorgiaFlag.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = GeorgiaFlag.png; sourceTree = "<group>"; };
+		723DA3FF1C4017E3004CAA3B /* HawaiiFlag.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = HawaiiFlag.png; sourceTree = "<group>"; };
+		723DA4001C4017E3004CAA3B /* IdahoFlag.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = IdahoFlag.png; sourceTree = "<group>"; };
+		723DA4011C4017E3004CAA3B /* IllinoisFlag.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = IllinoisFlag.png; sourceTree = "<group>"; };
+		723DA4021C4017E3004CAA3B /* IndianaFlag.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = IndianaFlag.png; sourceTree = "<group>"; };
+		723DA4031C4017E3004CAA3B /* IowaFlag.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = IowaFlag.png; sourceTree = "<group>"; };
+		723DA4041C4017E3004CAA3B /* KansasFlag.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = KansasFlag.png; sourceTree = "<group>"; };
+		723DA4051C4017E3004CAA3B /* KentuckyFlag.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = KentuckyFlag.png; sourceTree = "<group>"; };
+		723DA4061C4017E3004CAA3B /* LouisianaFlag.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = LouisianaFlag.png; sourceTree = "<group>"; };
+		723DA4071C4017E3004CAA3B /* MaineFlag.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = MaineFlag.png; sourceTree = "<group>"; };
+		723DA4081C4017E3004CAA3B /* MarylandFlag.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = MarylandFlag.png; sourceTree = "<group>"; };
+		723DA4091C4017E3004CAA3B /* MassachusettsFlag.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = MassachusettsFlag.png; sourceTree = "<group>"; };
+		723DA40A1C4017E3004CAA3B /* MichiganFlag.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = MichiganFlag.png; sourceTree = "<group>"; };
+		723DA40B1C4017E3004CAA3B /* MinnesotaFlag.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = MinnesotaFlag.png; sourceTree = "<group>"; };
+		723DA40C1C4017E3004CAA3B /* MississippiFlag.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = MississippiFlag.png; sourceTree = "<group>"; };
+		723DA40D1C4017E3004CAA3B /* MissouriFlag.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = MissouriFlag.png; sourceTree = "<group>"; };
+		723DA40E1C4017E3004CAA3B /* MontanaFlag.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = MontanaFlag.png; sourceTree = "<group>"; };
+		723DA40F1C4017E3004CAA3B /* NebraskaFlag.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = NebraskaFlag.png; sourceTree = "<group>"; };
+		723DA4101C4017E3004CAA3B /* NevadaFlag.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = NevadaFlag.png; sourceTree = "<group>"; };
+		723DA4111C4017E3004CAA3B /* NewHampshireFlag.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = NewHampshireFlag.png; sourceTree = "<group>"; };
+		723DA4121C4017E3004CAA3B /* NewJerseyFlag.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = NewJerseyFlag.png; sourceTree = "<group>"; };
+		723DA4131C4017E3004CAA3B /* NewMexicoFlag.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = NewMexicoFlag.png; sourceTree = "<group>"; };
+		723DA4141C4017E3004CAA3B /* NewYorkFlag.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = NewYorkFlag.png; sourceTree = "<group>"; };
+		723DA4151C4017E3004CAA3B /* NorthCarolinaFlag.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = NorthCarolinaFlag.png; sourceTree = "<group>"; };
+		723DA4161C4017E3004CAA3B /* NorthDakotaFlag.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = NorthDakotaFlag.png; sourceTree = "<group>"; };
+		723DA4171C4017E3004CAA3B /* OhioFlag.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = OhioFlag.png; sourceTree = "<group>"; };
+		723DA4181C4017E3004CAA3B /* OklahomaFlag.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = OklahomaFlag.png; sourceTree = "<group>"; };
+		723DA4191C4017E3004CAA3B /* OregonFlag.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = OregonFlag.png; sourceTree = "<group>"; };
+		723DA41A1C4017E3004CAA3B /* PennsylvaniaFlag.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = PennsylvaniaFlag.png; sourceTree = "<group>"; };
+		723DA41B1C4017E3004CAA3B /* RhodeIslandFlag.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = RhodeIslandFlag.png; sourceTree = "<group>"; };
+		723DA41C1C4017E3004CAA3B /* South_CarolinaFlag.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = South_CarolinaFlag.png; sourceTree = "<group>"; };
+		723DA41D1C4017E3004CAA3B /* SouthDakotaFlag.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = SouthDakotaFlag.png; sourceTree = "<group>"; };
+		723DA41E1C4017E3004CAA3B /* TennesseeFlag.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = TennesseeFlag.png; sourceTree = "<group>"; };
+		723DA41F1C4017E3004CAA3B /* TexasFlag.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = TexasFlag.png; sourceTree = "<group>"; };
+		723DA4201C4017E3004CAA3B /* UtahFlag.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = UtahFlag.png; sourceTree = "<group>"; };
+		723DA4211C4017E3004CAA3B /* VermontFlag.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = VermontFlag.png; sourceTree = "<group>"; };
+		723DA4221C4017E3004CAA3B /* VirginiaFlag.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = VirginiaFlag.png; sourceTree = "<group>"; };
+		723DA4231C4017E3004CAA3B /* WashingtonFlag.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = WashingtonFlag.png; sourceTree = "<group>"; };
+		723DA4241C4017E3004CAA3B /* WestVirginiaFlag.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = WestVirginiaFlag.png; sourceTree = "<group>"; };
+		723DA4251C4017E3004CAA3B /* WisconsinFlag.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = WisconsinFlag.png; sourceTree = "<group>"; };
+		723DA4261C4017E3004CAA3B /* WyomingFlag.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = WyomingFlag.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -1203,6 +1305,56 @@
 		720A8D301C2B887E00A53B87 /* Flags */ = {
 			isa = PBXGroup;
 			children = (
+				723DA3F51C4017E3004CAA3B /* AlabamaFlag.png */,
+				723DA3F61C4017E3004CAA3B /* AlaskaFlag.png */,
+				723DA3F71C4017E3004CAA3B /* ArizonaFlag.png */,
+				723DA3F81C4017E3004CAA3B /* ArkansasFlag.png */,
+				723DA3F91C4017E3004CAA3B /* CaliforniaFlag.png */,
+				723DA3FA1C4017E3004CAA3B /* ColoradoFlag.png */,
+				723DA3FB1C4017E3004CAA3B /* ConnecticutFlag.png */,
+				723DA3FC1C4017E3004CAA3B /* DelawareFlag.png */,
+				723DA3FD1C4017E3004CAA3B /* FloridaFlag.png */,
+				723DA3FE1C4017E3004CAA3B /* GeorgiaFlag.png */,
+				723DA3FF1C4017E3004CAA3B /* HawaiiFlag.png */,
+				723DA4001C4017E3004CAA3B /* IdahoFlag.png */,
+				723DA4011C4017E3004CAA3B /* IllinoisFlag.png */,
+				723DA4021C4017E3004CAA3B /* IndianaFlag.png */,
+				723DA4031C4017E3004CAA3B /* IowaFlag.png */,
+				723DA4041C4017E3004CAA3B /* KansasFlag.png */,
+				723DA4051C4017E3004CAA3B /* KentuckyFlag.png */,
+				723DA4061C4017E3004CAA3B /* LouisianaFlag.png */,
+				723DA4071C4017E3004CAA3B /* MaineFlag.png */,
+				723DA4081C4017E3004CAA3B /* MarylandFlag.png */,
+				723DA4091C4017E3004CAA3B /* MassachusettsFlag.png */,
+				723DA40A1C4017E3004CAA3B /* MichiganFlag.png */,
+				723DA40B1C4017E3004CAA3B /* MinnesotaFlag.png */,
+				723DA40C1C4017E3004CAA3B /* MississippiFlag.png */,
+				723DA40D1C4017E3004CAA3B /* MissouriFlag.png */,
+				723DA40E1C4017E3004CAA3B /* MontanaFlag.png */,
+				723DA40F1C4017E3004CAA3B /* NebraskaFlag.png */,
+				723DA4101C4017E3004CAA3B /* NevadaFlag.png */,
+				723DA4111C4017E3004CAA3B /* NewHampshireFlag.png */,
+				723DA4121C4017E3004CAA3B /* NewJerseyFlag.png */,
+				723DA4131C4017E3004CAA3B /* NewMexicoFlag.png */,
+				723DA4141C4017E3004CAA3B /* NewYorkFlag.png */,
+				723DA4151C4017E3004CAA3B /* NorthCarolinaFlag.png */,
+				723DA4161C4017E3004CAA3B /* NorthDakotaFlag.png */,
+				723DA4171C4017E3004CAA3B /* OhioFlag.png */,
+				723DA4181C4017E3004CAA3B /* OklahomaFlag.png */,
+				723DA4191C4017E3004CAA3B /* OregonFlag.png */,
+				723DA41A1C4017E3004CAA3B /* PennsylvaniaFlag.png */,
+				723DA41B1C4017E3004CAA3B /* RhodeIslandFlag.png */,
+				723DA41C1C4017E3004CAA3B /* South_CarolinaFlag.png */,
+				723DA41D1C4017E3004CAA3B /* SouthDakotaFlag.png */,
+				723DA41E1C4017E3004CAA3B /* TennesseeFlag.png */,
+				723DA41F1C4017E3004CAA3B /* TexasFlag.png */,
+				723DA4201C4017E3004CAA3B /* UtahFlag.png */,
+				723DA4211C4017E3004CAA3B /* VermontFlag.png */,
+				723DA4221C4017E3004CAA3B /* VirginiaFlag.png */,
+				723DA4231C4017E3004CAA3B /* WashingtonFlag.png */,
+				723DA4241C4017E3004CAA3B /* WestVirginiaFlag.png */,
+				723DA4251C4017E3004CAA3B /* WisconsinFlag.png */,
+				723DA4261C4017E3004CAA3B /* WyomingFlag.png */,
 			);
 			name = Flags;
 			sourceTree = "<group>";
@@ -1245,9 +1397,10 @@
 		720A8D3A1C2B88E500A53B87 /* FlatDatafiles */ = {
 			isa = PBXGroup;
 			children = (
+				723DA3F31C401429004CAA3B /* statesBackup_normalRes.txt */,
 				723DA0771C2E52C1004CAA3B /* lakes.txt */,
-				723DA0731C2E4ABE004CAA3B /* states.txt */,
-				723DA0711C2E4A3D004CAA3B /* statesBackup.txt */,
+				723DA0731C2E4ABE004CAA3B /* statesLowRes.txt */,
+				723DA0711C2E4A3D004CAA3B /* statesBackup_lowRes.txt */,
 			);
 			name = FlatDatafiles;
 			sourceTree = "<group>";
@@ -1764,6 +1917,7 @@
 			files = (
 				723DA09F1C302723004CAA3B /* 50MaskWater.png in Resources */,
 				723DA3D41C302872004CAA3B /* usa_100_18_9.jpg in Resources */,
+				723DA43B1C4017E3004CAA3B /* MassachusettsFlag.png in Resources */,
 				723DA3421C302872004CAA3B /* usa_100_9_7.jpg in Resources */,
 				723DA2D31C302872004CAA3B /* usa_100_2_8.jpg in Resources */,
 				720A8D3D1C2B893C00A53B87 /* GameData.plist in Resources */,
@@ -1778,23 +1932,31 @@
 				723DA3961C302872004CAA3B /* usa_100_14_11.jpg in Resources */,
 				723DA3391C302872004CAA3B /* usa_100_8_14.jpg in Resources */,
 				723DA30A1C302872004CAA3B /* usa_100_5_15.jpg in Resources */,
+				723DA43E1C4017E3004CAA3B /* MississippiFlag.png in Resources */,
+				723DA4411C4017E3004CAA3B /* NebraskaFlag.png in Resources */,
 				723DA1531C30283F004CAA3B /* usa_50_7_0.jpg in Resources */,
+				723DA4461C4017E3004CAA3B /* NewYorkFlag.png in Resources */,
 				723DA14A1C30283F004CAA3B /* usa_50_5_7.jpg in Resources */,
 				723DA1361C30283F004CAA3B /* usa_50_3_3.jpg in Resources */,
 				723DA2DF1C302872004CAA3B /* usa_100_3_4.jpg in Resources */,
 				723DA3721C302872004CAA3B /* usa_100_12_7.jpg in Resources */,
 				723DA31F1C302872004CAA3B /* usa_100_7_4.jpg in Resources */,
 				723DA2B51C302872004CAA3B /* usa_100_0_10.jpg in Resources */,
+				723DA42B1C4017E3004CAA3B /* CaliforniaFlag.png in Resources */,
+				723DA4491C4017E3004CAA3B /* OhioFlag.png in Resources */,
 				723DA1291C30283F004CAA3B /* usa_50_1_6.jpg in Resources */,
+				723DA4521C4017E3004CAA3B /* UtahFlag.png in Resources */,
 				723DA3981C302872004CAA3B /* usa_100_14_13.jpg in Resources */,
 				723DA3791C302872004CAA3B /* usa_100_12_14.jpg in Resources */,
 				723DA3351C302872004CAA3B /* usa_100_8_10.jpg in Resources */,
 				723DA3141C302872004CAA3B /* usa_100_6_9.jpg in Resources */,
 				723DA1681C30283F004CAA3B /* usa_50_9_5.jpg in Resources */,
 				723DA2C81C302872004CAA3B /* usa_100_1_13.jpg in Resources */,
+				723DA42D1C4017E3004CAA3B /* ConnecticutFlag.png in Resources */,
 				723DA12B1C30283F004CAA3B /* usa_50_2_0.jpg in Resources */,
 				723DA2C01C302872004CAA3B /* usa_100_1_5.jpg in Resources */,
 				723DA3B11C302872004CAA3B /* usa_100_16_6.jpg in Resources */,
+				723DA43A1C4017E3004CAA3B /* MarylandFlag.png in Resources */,
 				723DA3BD1C302872004CAA3B /* usa_100_17_2.jpg in Resources */,
 				723DA3A41C302872004CAA3B /* usa_100_15_9.jpg in Resources */,
 				723DA37F1C302872004CAA3B /* usa_100_13_4.jpg in Resources */,
@@ -1802,11 +1964,14 @@
 				723DA1541C30283F004CAA3B /* usa_50_7_1.jpg in Resources */,
 				723DA3DA1C302872004CAA3B /* usa_100_18_15.jpg in Resources */,
 				723DA39E1C302872004CAA3B /* usa_100_15_3.jpg in Resources */,
+				723DA4341C4017E3004CAA3B /* IndianaFlag.png in Resources */,
 				723DA1271C30283F004CAA3B /* usa_50_1_4.jpg in Resources */,
+				723DA4581C4017E3004CAA3B /* WyomingFlag.png in Resources */,
 				723DA3641C302872004CAA3B /* usa_100_11_9.jpg in Resources */,
 				723DA3EC1C3029E1004CAA3B /* crosshair3.png in Resources */,
 				723DA35E1C302872004CAA3B /* usa_100_11_3.jpg in Resources */,
 				723DA3661C302872004CAA3B /* usa_100_11_11.jpg in Resources */,
+				723DA4381C4017E3004CAA3B /* LouisianaFlag.png in Resources */,
 				723DA1491C30283F004CAA3B /* usa_50_5_6.jpg in Resources */,
 				723DA31A1C302872004CAA3B /* usa_100_6_15.jpg in Resources */,
 				723DA11C1C30283F004CAA3B /* usa_50_0_1.jpg in Resources */,
@@ -1817,6 +1982,7 @@
 				723DA3A11C302872004CAA3B /* usa_100_15_6.jpg in Resources */,
 				723DA3971C302872004CAA3B /* usa_100_14_12.jpg in Resources */,
 				723DA13B1C30283F004CAA3B /* usa_50_4_0.jpg in Resources */,
+				723DA44B1C4017E3004CAA3B /* OregonFlag.png in Resources */,
 				723DA1331C30283F004CAA3B /* usa_50_3_0.jpg in Resources */,
 				723DA3031C302872004CAA3B /* usa_100_5_8.jpg in Resources */,
 				723DA1201C30283F004CAA3B /* usa_50_0_5.jpg in Resources */,
@@ -1835,6 +2001,7 @@
 				723DA3CE1C302872004CAA3B /* usa_100_18_3.jpg in Resources */,
 				723DA3C01C302872004CAA3B /* usa_100_17_5.jpg in Resources */,
 				723DA14E1C30283F004CAA3B /* usa_50_6_3.jpg in Resources */,
+				723DA4401C4017E3004CAA3B /* MontanaFlag.png in Resources */,
 				723DA2EC1C302872004CAA3B /* usa_100_4_1.jpg in Resources */,
 				723DA3D31C302872004CAA3B /* usa_100_18_8.jpg in Resources */,
 				723DA2CB1C302872004CAA3B /* usa_100_2_0.jpg in Resources */,
@@ -1848,10 +2015,12 @@
 				723DA3E51C302872004CAA3B /* usa_100_19_10.jpg in Resources */,
 				723DA3931C302872004CAA3B /* usa_100_14_8.jpg in Resources */,
 				723DA3251C302872004CAA3B /* usa_100_7_10.jpg in Resources */,
+				723DA4571C4017E3004CAA3B /* WisconsinFlag.png in Resources */,
 				723DA3C31C302872004CAA3B /* usa_100_17_8.jpg in Resources */,
 				723DA3261C302872004CAA3B /* usa_100_7_11.jpg in Resources */,
 				723DA2DA1C302872004CAA3B /* usa_100_2_15.jpg in Resources */,
 				723DA3A81C302872004CAA3B /* usa_100_15_13.jpg in Resources */,
+				723DA4351C4017E3004CAA3B /* IowaFlag.png in Resources */,
 				723DA0CA1C302827004CAA3B /* usa_25_4_3.jpg in Resources */,
 				723DA3811C302872004CAA3B /* usa_100_13_6.jpg in Resources */,
 				723DA11E1C30283F004CAA3B /* usa_50_0_3.jpg in Resources */,
@@ -1861,7 +2030,9 @@
 				723DA32C1C302872004CAA3B /* usa_100_8_1.jpg in Resources */,
 				723DA38E1C302872004CAA3B /* usa_100_14_3.jpg in Resources */,
 				723DA13E1C30283F004CAA3B /* usa_50_4_3.jpg in Resources */,
+				723DA4561C4017E3004CAA3B /* WestVirginiaFlag.png in Resources */,
 				723DA3371C302872004CAA3B /* usa_100_8_12.jpg in Resources */,
+				723DA4541C4017E3004CAA3B /* VirginiaFlag.png in Resources */,
 				723DA2FB1C302872004CAA3B /* usa_100_5_0.jpg in Resources */,
 				723DA3201C302872004CAA3B /* usa_100_7_5.jpg in Resources */,
 				723DA3B91C302872004CAA3B /* usa_100_16_14.jpg in Resources */,
@@ -1902,6 +2073,7 @@
 				723DA3061C302872004CAA3B /* usa_100_5_11.jpg in Resources */,
 				723DA3711C302872004CAA3B /* usa_100_12_6.jpg in Resources */,
 				723DA2E81C302872004CAA3B /* usa_100_3_13.jpg in Resources */,
+				723DA44D1C4017E3004CAA3B /* RhodeIslandFlag.png in Resources */,
 				723DA3CA1C302872004CAA3B /* usa_100_17_15.jpg in Resources */,
 				723DA15C1C30283F004CAA3B /* usa_50_8_1.jpg in Resources */,
 				723DA3691C302872004CAA3B /* usa_100_11_14.jpg in Resources */,
@@ -1912,13 +2084,17 @@
 				723DA3631C302872004CAA3B /* usa_100_11_8.jpg in Resources */,
 				723DA3461C302872004CAA3B /* usa_100_9_11.jpg in Resources */,
 				723DA2D81C302872004CAA3B /* usa_100_2_13.jpg in Resources */,
+				723DA4331C4017E3004CAA3B /* IllinoisFlag.png in Resources */,
 				723DA3231C302872004CAA3B /* usa_100_7_8.jpg in Resources */,
 				723DA2E91C302872004CAA3B /* usa_100_3_14.jpg in Resources */,
 				723DA0C61C302827004CAA3B /* usa_25_3_3.jpg in Resources */,
 				723DA2EB1C302872004CAA3B /* usa_100_4_0.jpg in Resources */,
+				723DA4311C4017E3004CAA3B /* HawaiiFlag.png in Resources */,
 				723DA2F11C302872004CAA3B /* usa_100_4_6.jpg in Resources */,
+				723DA43C1C4017E3004CAA3B /* MichiganFlag.png in Resources */,
 				723DA13C1C30283F004CAA3B /* usa_50_4_1.jpg in Resources */,
 				723DA37D1C302872004CAA3B /* usa_100_13_2.jpg in Resources */,
+				723DA43F1C4017E3004CAA3B /* MissouriFlag.png in Resources */,
 				723DA3091C302872004CAA3B /* usa_100_5_14.jpg in Resources */,
 				723DA11F1C30283F004CAA3B /* usa_50_0_4.jpg in Resources */,
 				723DA1671C30283F004CAA3B /* usa_50_9_4.jpg in Resources */,
@@ -1940,8 +2116,10 @@
 				723DA2D91C302872004CAA3B /* usa_100_2_14.jpg in Resources */,
 				723DA3081C302872004CAA3B /* usa_100_5_13.jpg in Resources */,
 				723DA2BE1C302872004CAA3B /* usa_100_1_3.jpg in Resources */,
+				723DA4291C4017E3004CAA3B /* ArizonaFlag.png in Resources */,
 				723DA30E1C302872004CAA3B /* usa_100_6_3.jpg in Resources */,
 				723DA3CC1C302872004CAA3B /* usa_100_18_1.jpg in Resources */,
+				723DA42C1C4017E3004CAA3B /* ColoradoFlag.png in Resources */,
 				723DA3CF1C302872004CAA3B /* usa_100_18_4.jpg in Resources */,
 				723DA3001C302872004CAA3B /* usa_100_5_5.jpg in Resources */,
 				723DA3B71C302872004CAA3B /* usa_100_16_12.jpg in Resources */,
@@ -1950,6 +2128,7 @@
 				723DA3851C302872004CAA3B /* usa_100_13_10.jpg in Resources */,
 				723DA1511C30283F004CAA3B /* usa_50_6_6.jpg in Resources */,
 				723DA3411C302872004CAA3B /* usa_100_9_6.jpg in Resources */,
+				723DA4431C4017E3004CAA3B /* NewHampshireFlag.png in Resources */,
 				723DA30D1C302872004CAA3B /* usa_100_6_2.jpg in Resources */,
 				723DA1261C30283F004CAA3B /* usa_50_1_3.jpg in Resources */,
 				723DA3A51C302872004CAA3B /* usa_100_15_10.jpg in Resources */,
@@ -1961,6 +2140,7 @@
 				723DA1691C30283F004CAA3B /* usa_50_9_6.jpg in Resources */,
 				723DA3CD1C302872004CAA3B /* usa_100_18_2.jpg in Resources */,
 				723DA3171C302872004CAA3B /* usa_100_6_12.jpg in Resources */,
+				723DA42E1C4017E3004CAA3B /* DelawareFlag.png in Resources */,
 				723DA34E1C302872004CAA3B /* usa_100_10_3.jpg in Resources */,
 				723DA3951C302872004CAA3B /* usa_100_14_10.jpg in Resources */,
 				723DA36A1C302872004CAA3B /* usa_100_11_15.jpg in Resources */,
@@ -1977,9 +2157,11 @@
 				723DA3831C302872004CAA3B /* usa_100_13_8.jpg in Resources */,
 				723DA2E31C302872004CAA3B /* usa_100_3_8.jpg in Resources */,
 				723DA3B61C302872004CAA3B /* usa_100_16_11.jpg in Resources */,
+				723DA43D1C4017E3004CAA3B /* MinnesotaFlag.png in Resources */,
 				723DA1281C30283F004CAA3B /* usa_50_1_5.jpg in Resources */,
 				723DA0C01C302827004CAA3B /* usa_25_2_1.jpg in Resources */,
 				723DA0781C2E52C1004CAA3B /* lakes.txt in Resources */,
+				723DA4371C4017E3004CAA3B /* KentuckyFlag.png in Resources */,
 				723DA3B51C302872004CAA3B /* usa_100_16_10.jpg in Resources */,
 				723DA2D11C302872004CAA3B /* usa_100_2_6.jpg in Resources */,
 				723DA3151C302872004CAA3B /* usa_100_6_10.jpg in Resources */,
@@ -2001,6 +2183,7 @@
 				723DA2B01C302872004CAA3B /* usa_100_0_5.jpg in Resources */,
 				723DA3131C302872004CAA3B /* usa_100_6_8.jpg in Resources */,
 				723DA1401C30283F004CAA3B /* usa_50_4_5.jpg in Resources */,
+				723DA44F1C4017E3004CAA3B /* SouthDakotaFlag.png in Resources */,
 				723DA3181C302872004CAA3B /* usa_100_6_13.jpg in Resources */,
 				723DA0A21C30272A004CAA3B /* 25MaskLand.png in Resources */,
 				723DA3C41C302872004CAA3B /* usa_100_17_9.jpg in Resources */,
@@ -2008,13 +2191,17 @@
 				723DA3AD1C302872004CAA3B /* usa_100_16_2.jpg in Resources */,
 				723DA2E61C302872004CAA3B /* usa_100_3_11.jpg in Resources */,
 				723DA0C71C302827004CAA3B /* usa_25_4_0.jpg in Resources */,
+				723DA4281C4017E3004CAA3B /* AlaskaFlag.png in Resources */,
+				723DA4501C4017E3004CAA3B /* TennesseeFlag.png in Resources */,
 				723DA1471C30283F004CAA3B /* usa_50_5_4.jpg in Resources */,
+				723DA42F1C4017E3004CAA3B /* FloridaFlag.png in Resources */,
 				723DA3C11C302872004CAA3B /* usa_100_17_6.jpg in Resources */,
 				723DA11D1C30283F004CAA3B /* usa_50_0_2.jpg in Resources */,
 				723DA3601C302872004CAA3B /* usa_100_11_5.jpg in Resources */,
 				723DA14F1C30283F004CAA3B /* usa_50_6_4.jpg in Resources */,
 				723DA37E1C302872004CAA3B /* usa_100_13_3.jpg in Resources */,
 				723DA1391C30283F004CAA3B /* usa_50_3_6.jpg in Resources */,
+				723DA4421C4017E3004CAA3B /* NevadaFlag.png in Resources */,
 				723DA0941C3026DC004CAA3B /* crosshair2.png in Resources */,
 				723DA3331C302872004CAA3B /* usa_100_8_8.jpg in Resources */,
 				723DA39D1C302872004CAA3B /* usa_100_15_2.jpg in Resources */,
@@ -2023,6 +2210,7 @@
 				723DA0C11C302827004CAA3B /* usa_25_2_2.jpg in Resources */,
 				723DA2FE1C302872004CAA3B /* usa_100_5_3.jpg in Resources */,
 				723DA38C1C302872004CAA3B /* usa_100_14_1.jpg in Resources */,
+				723DA44E1C4017E3004CAA3B /* South_CarolinaFlag.png in Resources */,
 				723DA3541C302872004CAA3B /* usa_100_10_9.jpg in Resources */,
 				723DA3751C302872004CAA3B /* usa_100_12_10.jpg in Resources */,
 				723DA3D21C302872004CAA3B /* usa_100_18_7.jpg in Resources */,
@@ -2032,6 +2220,7 @@
 				723DA1581C30283F004CAA3B /* usa_50_7_5.jpg in Resources */,
 				723DA3CB1C302872004CAA3B /* usa_100_18_0.jpg in Resources */,
 				723DA1631C30283F004CAA3B /* usa_50_9_0.jpg in Resources */,
+				723DA4471C4017E3004CAA3B /* NorthCarolinaFlag.png in Resources */,
 				723DA0BC1C302827004CAA3B /* usa_25_1_1.jpg in Resources */,
 				723DA3041C302872004CAA3B /* usa_100_5_9.jpg in Resources */,
 				723DA1501C30283F004CAA3B /* usa_50_6_5.jpg in Resources */,
@@ -2042,6 +2231,7 @@
 				723DA2E41C302872004CAA3B /* usa_100_3_9.jpg in Resources */,
 				723DA1571C30283F004CAA3B /* usa_50_7_4.jpg in Resources */,
 				720A8CB41C2B861A00A53B87 /* Main.storyboard in Resources */,
+				723DA4481C4017E3004CAA3B /* NorthDakotaFlag.png in Resources */,
 				723DA3901C302872004CAA3B /* usa_100_14_5.jpg in Resources */,
 				723DA2DE1C302872004CAA3B /* usa_100_3_3.jpg in Resources */,
 				723DA3191C302872004CAA3B /* usa_100_6_14.jpg in Resources */,
@@ -2049,6 +2239,7 @@
 				723DA3591C302872004CAA3B /* usa_100_10_14.jpg in Resources */,
 				723DA2E71C302872004CAA3B /* usa_100_3_12.jpg in Resources */,
 				723DA1231C30283F004CAA3B /* usa_50_1_0.jpg in Resources */,
+				723DA44C1C4017E3004CAA3B /* PennsylvaniaFlag.png in Resources */,
 				723DA2F01C302872004CAA3B /* usa_100_4_5.jpg in Resources */,
 				723DA1611C30283F004CAA3B /* usa_50_8_6.jpg in Resources */,
 				723DA1301C30283F004CAA3B /* usa_50_2_5.jpg in Resources */,
@@ -2085,6 +2276,9 @@
 				723DA1521C30283F004CAA3B /* usa_50_6_7.jpg in Resources */,
 				723DA1591C30283F004CAA3B /* usa_50_7_6.jpg in Resources */,
 				723DA39B1C302872004CAA3B /* usa_100_15_0.jpg in Resources */,
+				723DA4391C4017E3004CAA3B /* MaineFlag.png in Resources */,
+				723DA4551C4017E3004CAA3B /* WashingtonFlag.png in Resources */,
+				723DA4271C4017E3004CAA3B /* AlabamaFlag.png in Resources */,
 				723DA0C21C302827004CAA3B /* usa_25_2_3.jpg in Resources */,
 				723DA0C31C302827004CAA3B /* usa_25_3_0.jpg in Resources */,
 				723DA35D1C302872004CAA3B /* usa_100_11_2.jpg in Resources */,
@@ -2100,7 +2294,9 @@
 				723DA1451C30283F004CAA3B /* usa_50_5_2.jpg in Resources */,
 				723DA1661C30283F004CAA3B /* usa_50_9_3.jpg in Resources */,
 				723DA34A1C302872004CAA3B /* usa_100_9_15.jpg in Resources */,
+				723DA4361C4017E3004CAA3B /* KansasFlag.png in Resources */,
 				723DA3501C302872004CAA3B /* usa_100_10_5.jpg in Resources */,
+				723DA4301C4017E3004CAA3B /* GeorgiaFlag.png in Resources */,
 				723DA3AC1C302872004CAA3B /* usa_100_16_1.jpg in Resources */,
 				723DA3D61C302872004CAA3B /* usa_100_18_11.jpg in Resources */,
 				723DA3521C302872004CAA3B /* usa_100_10_7.jpg in Resources */,
@@ -2112,6 +2308,8 @@
 				723DA2F31C302872004CAA3B /* usa_100_4_8.jpg in Resources */,
 				723DA1461C30283F004CAA3B /* usa_50_5_3.jpg in Resources */,
 				723DA1341C30283F004CAA3B /* usa_50_3_1.jpg in Resources */,
+				723DA4511C4017E3004CAA3B /* TexasFlag.png in Resources */,
+				723DA4451C4017E3004CAA3B /* NewMexicoFlag.png in Resources */,
 				723DA3291C302872004CAA3B /* usa_100_7_14.jpg in Resources */,
 				723DA2E11C302872004CAA3B /* usa_100_3_6.jpg in Resources */,
 				723DA36E1C302872004CAA3B /* usa_100_12_3.jpg in Resources */,
@@ -2127,7 +2325,9 @@
 				723DA3BB1C302872004CAA3B /* usa_100_17_0.jpg in Resources */,
 				723DA3821C302872004CAA3B /* usa_100_13_7.jpg in Resources */,
 				723DA3C81C302872004CAA3B /* usa_100_17_13.jpg in Resources */,
+				723DA4321C4017E3004CAA3B /* IdahoFlag.png in Resources */,
 				723DA2C11C302872004CAA3B /* usa_100_1_6.jpg in Resources */,
+				723DA42A1C4017E3004CAA3B /* ArkansasFlag.png in Resources */,
 				723DA3E01C302872004CAA3B /* usa_100_19_5.jpg in Resources */,
 				723DA3801C302872004CAA3B /* usa_100_13_5.jpg in Resources */,
 				723DA14B1C30283F004CAA3B /* usa_50_6_0.jpg in Resources */,
@@ -2135,6 +2335,7 @@
 				723DA3B81C302872004CAA3B /* usa_100_16_13.jpg in Resources */,
 				723DA2C61C302872004CAA3B /* usa_100_1_11.jpg in Resources */,
 				723DA3511C302872004CAA3B /* usa_100_10_6.jpg in Resources */,
+				723DA3F41C401429004CAA3B /* statesBackup_normalRes.txt in Resources */,
 				723DA39A1C302872004CAA3B /* usa_100_14_15.jpg in Resources */,
 				723DA15B1C30283F004CAA3B /* usa_50_8_0.jpg in Resources */,
 				723DA3BF1C302872004CAA3B /* usa_100_17_4.jpg in Resources */,
@@ -2147,6 +2348,7 @@
 				723DA1441C30283F004CAA3B /* usa_50_5_1.jpg in Resources */,
 				723DA3DB1C302872004CAA3B /* usa_100_19_0.jpg in Resources */,
 				723DA3281C302872004CAA3B /* usa_100_7_13.jpg in Resources */,
+				723DA4441C4017E3004CAA3B /* NewJerseyFlag.png in Resources */,
 				723DA3361C302872004CAA3B /* usa_100_8_11.jpg in Resources */,
 				723DA3E11C302872004CAA3B /* usa_100_19_6.jpg in Resources */,
 				723DA3D81C302872004CAA3B /* usa_100_18_13.jpg in Resources */,
@@ -2165,13 +2367,14 @@
 				723DA2F81C302872004CAA3B /* usa_100_4_13.jpg in Resources */,
 				723DA0C81C302827004CAA3B /* usa_25_4_1.jpg in Resources */,
 				723DA2DB1C302872004CAA3B /* usa_100_3_0.jpg in Resources */,
+				723DA4531C4017E3004CAA3B /* VermontFlag.png in Resources */,
 				723DA3271C302872004CAA3B /* usa_100_7_12.jpg in Resources */,
 				723DA32F1C302872004CAA3B /* usa_100_8_4.jpg in Resources */,
 				723DA2CC1C302872004CAA3B /* usa_100_2_1.jpg in Resources */,
 				723DA2BB1C302872004CAA3B /* usa_100_1_0.jpg in Resources */,
 				723DA1481C30283F004CAA3B /* usa_50_5_5.jpg in Resources */,
 				723DA34F1C302872004CAA3B /* usa_100_10_4.jpg in Resources */,
-				723DA0741C2E4ABE004CAA3B /* states.txt in Resources */,
+				723DA0741C2E4ABE004CAA3B /* statesLowRes.txt in Resources */,
 				723DA2C51C302872004CAA3B /* usa_100_1_10.jpg in Resources */,
 				723DA2C91C302872004CAA3B /* usa_100_1_14.jpg in Resources */,
 				723DA35B1C302872004CAA3B /* usa_100_11_0.jpg in Resources */,
@@ -2192,12 +2395,13 @@
 				723DA09D1C302723004CAA3B /* 100MaskLand.png in Resources */,
 				723DA0B71C302827004CAA3B /* usa_25_0_0.jpg in Resources */,
 				723DA3491C302872004CAA3B /* usa_100_9_14.jpg in Resources */,
+				723DA44A1C4017E3004CAA3B /* OklahomaFlag.png in Resources */,
 				723DA33F1C302872004CAA3B /* usa_100_9_4.jpg in Resources */,
 				723DA3111C302872004CAA3B /* usa_100_6_6.jpg in Resources */,
 				723DA3651C302872004CAA3B /* usa_100_11_10.jpg in Resources */,
 				723DA31E1C302872004CAA3B /* usa_100_7_3.jpg in Resources */,
 				723DA15F1C30283F004CAA3B /* usa_50_8_4.jpg in Resources */,
-				723DA0721C2E4A3D004CAA3B /* statesBackup.txt in Resources */,
+				723DA0721C2E4A3D004CAA3B /* statesBackup_lowRes.txt in Resources */,
 				723DA32B1C302872004CAA3B /* usa_100_8_0.jpg in Resources */,
 				723DA3441C302872004CAA3B /* usa_100_9_9.jpg in Resources */,
 			);
