@@ -1,3 +1,4 @@
+
 //
 //  ViewController.swift
 //  MapFeud
@@ -54,7 +55,7 @@ class PlayViewController: UIViewController , MapDelegate,ADBannerViewDelegate, C
     var bannerView:ADBannerView?
     
     var usingKm:Bool = true
-    var questonsLeft:Int!
+    //var questonsLeft:Int!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -76,10 +77,16 @@ class PlayViewController: UIViewController , MapDelegate,ADBannerViewDelegate, C
             self.bannerView?.hidden = false
         }
         let mapHeight = adFree ? UIScreen.mainScreen().bounds.height : UIScreen.mainScreen().bounds.height - bannerView!.frame.height
+        
         if gametype == GameType.takingChallenge
         {
             drawBorders = (challenge as! TakingChallenge).usingBorders == 1 ? true : false
         }
+        else if gametype == GameType.badgeChallenge
+        {
+            drawBorders = (challenge as! BadgeChallenge).usingBorders == 1 ? true : false
+        }
+        
         map = MapScrollView(frame: CGRectMake(0, 0, UIScreen.mainScreen().bounds.width, mapHeight), drawBorders: drawBorders)
         map.delegate = self
         
@@ -116,6 +123,10 @@ class PlayViewController: UIViewController , MapDelegate,ADBannerViewDelegate, C
         distanceView.userInteractionEnabled = false
         self.view.addSubview(distanceView)
         distanceView.orgFrame = distanceView.frame
+        if gametype == GameType.badgeChallenge
+        {
+            distanceView.forceHide()
+        }
         
         setupButtons()
         
@@ -252,35 +263,154 @@ class PlayViewController: UIViewController , MapDelegate,ADBannerViewDelegate, C
         map.animateAnswer(questionPlace)
     }
     
-    func finishedAnimatingAnswer(distance:Int)
+    func finishedAnimatingAnswer(distance:Int,insidePerfectWindow:Bool,insideOkWindow:Bool)
     {
         if let qv = answerView
         {
             qv.setAnswer(currentQuestion, distance: distance)
         }
         
-        if distance <= 0
+        if gametype != GameType.training
         {
-            if gametype != GameType.training
+            if distance <= 0
             {
                 currentQuestion.rightAnsw++
                 datactrl.save()
             }
         }
         
-        showAnswer({() -> Void in
-            self.animateDistanceToAdd(distance,completion: {() -> Void in
-                
-                UIView.animateWithDuration(0.5, animations: { () -> Void in
-                    self.hideNextButton(false)
-                    self.hintButton.hide()
+        if gametype == GameType.badgeChallenge
+        {
+            if let badgeChallenge = (challenge as? BadgeChallenge)
+            {
 
+                if distance > 0 && !insideOkWindow
+                {
+                    //challenge is lost
+                    challenge.questionIds.removeAll()
+                    badgeChallenge.won = false
+                    
+                }
+                
+                showAnswer({() -> Void in
+                    
+                    self.animateRightOrWrong(distance,insidePerfectWindow: insidePerfectWindow, insideOkWindow: insideOkWindow,completion: {() -> Void in
+                        
+                        UIView.animateWithDuration(0.5, animations: { () -> Void in
+                            self.hideNextButton(false)
+                            self.hintButton.hide()
+                            
+                        })
+                        
+                        
                     })
+                })
                 
+            }
+        }
+        else
+        {
+        
+            showAnswer({() -> Void in
 
+                self.animateDistanceToAdd(distance,completion: {() -> Void in
+                    
+                    UIView.animateWithDuration(0.5, animations: { () -> Void in
+                        self.hideNextButton(false)
+                        self.hintButton.hide()
+
+                        })
+                })
             })
-        })
+        }
 
+    }
+    
+    func animateRightOrWrong(distance:Int, insidePerfectWindow:Bool, insideOkWindow:Bool,completion: (() -> (Void)))
+    {
+        let tempIconAnimateLabel = UILabel(frame: CGRectMake(0, 0, UIScreen.mainScreen().bounds.width / 2, 50))
+        tempIconAnimateLabel.center = CGPointMake( UIScreen.mainScreen().bounds.midX, UIScreen.mainScreen().bounds.midY)
+        tempIconAnimateLabel.textAlignment = NSTextAlignment.Center
+        self.view.addSubview(tempIconAnimateLabel)
+        
+        let tempDisctanceAnimateLabel = UILabel(frame: CGRectMake(0, 0, UIScreen.mainScreen().bounds.width / 2, 50))
+        tempDisctanceAnimateLabel.textColor = UIColor.whiteColor()
+        tempDisctanceAnimateLabel.center = CGPointMake( UIScreen.mainScreen().bounds.midX, UIScreen.mainScreen().bounds.midY)
+        tempDisctanceAnimateLabel.textAlignment = NSTextAlignment.Center
+        tempDisctanceAnimateLabel.adjustsFontSizeToFitWidth = true
+        self.view.addSubview(tempDisctanceAnimateLabel)
+        
+        tempDisctanceAnimateLabel.center = CGPointMake( UIScreen.mainScreen().bounds.midX, UIScreen.mainScreen().bounds.midY)
+        tempDisctanceAnimateLabel.alpha = 0
+        let distanceText = usingKm ? "\(distance) km" : "\(Int(CGFloat(distance) * 0.621371)) miles"
+        
+
+        if insidePerfectWindow
+        {
+            tempDisctanceAnimateLabel.text = "Correct location"
+        }
+        else if insideOkWindow
+        {
+            tempDisctanceAnimateLabel.text = "Close enough"
+        }
+        else
+        {
+            tempDisctanceAnimateLabel.text = "Wrong by \(distanceText)"
+        }
+        
+        
+        tempIconAnimateLabel.text = getEmojiOnWindow(insidePerfectWindow,windowOk: insideOkWindow)
+        tempIconAnimateLabel.alpha = 0
+        tempIconAnimateLabel.transform = CGAffineTransformScale(tempIconAnimateLabel.transform, 0.1, 0.1)
+        UIView.animateWithDuration(1, delay: 0.0, options: UIViewAnimationOptions.CurveEaseOut, animations: { () -> Void in
+            
+            tempIconAnimateLabel.alpha = 1
+            tempIconAnimateLabel.transform = CGAffineTransformIdentity
+            tempIconAnimateLabel.transform = CGAffineTransformScale(tempIconAnimateLabel.transform, 3, 3)
+            tempIconAnimateLabel.frame.offsetInPlace(dx: 0, dy: UIScreen.mainScreen().bounds.height * 0.1)
+            tempDisctanceAnimateLabel.transform = CGAffineTransformScale(tempDisctanceAnimateLabel.transform, 2, 2)
+            tempDisctanceAnimateLabel.frame.offsetInPlace(dx: 0, dy: UIScreen.mainScreen().bounds.height * 0.25)
+            tempDisctanceAnimateLabel.alpha = 1
+            }, completion: { (value: Bool) in
+                
+                UIView.animateWithDuration(1, delay: 0.0, options: UIViewAnimationOptions.CurveEaseOut, animations: { () -> Void in
+                    //tempIconAnimateLabel.transform = CGAffineTransformIdentity
+                    tempIconAnimateLabel.transform = CGAffineTransformScale(tempIconAnimateLabel.transform, 6, 6)
+                    tempIconAnimateLabel.alpha = 0
+                    
+                    tempDisctanceAnimateLabel.center = self.view.center
+                    tempDisctanceAnimateLabel.transform = CGAffineTransformScale(tempDisctanceAnimateLabel.transform, 2, 2)
+                    tempDisctanceAnimateLabel.alpha = 0
+                    
+                    /*
+                    if distance > 0
+                    {
+                        tempDisctanceAnimateLabel.center = self.distanceView.center
+                        tempDisctanceAnimateLabel.transform = CGAffineTransformIdentity
+                    }
+                    else
+                    {
+                        tempDisctanceAnimateLabel.center = self.view.center
+                        tempDisctanceAnimateLabel.transform = CGAffineTransformScale(tempDisctanceAnimateLabel.transform, 2, 2)
+                        tempDisctanceAnimateLabel.alpha = 0
+                    }
+                    */
+                    }, completion: { (value: Bool) in
+                        tempDisctanceAnimateLabel.removeFromSuperview()
+                        tempIconAnimateLabel.removeFromSuperview()
+                        
+                        /*
+                        if distance > 0
+                        {
+                            self.distanceView.addDistance(distance)
+                        }
+                        */
+                        
+                        completion()
+                        
+                })
+                
+        })
     }
     
     func animateDistanceToAdd(distance:Int,completion: (() -> (Void)))
@@ -347,9 +477,26 @@ class PlayViewController: UIViewController , MapDelegate,ADBannerViewDelegate, C
         })
     }
     
+    func getEmojiOnWindow(windowPerfect:Bool,windowOk:Bool) -> String
+    {
+        var emoji = "😫"
+        
+        if gametype == GameType.badgeChallenge
+        {
+            if windowPerfect{
+                emoji = "😀"
+            }
+            else if windowOk {
+                emoji = "😌"
+            }
+        }
+        return emoji
+    }
+    
     func getEmojiOnMissedDistance(missedDistance:Int) -> String
     {
         var emoji = "😀"
+
         if(missedDistance > 2000){
             emoji = "😭"
         }
@@ -365,9 +512,11 @@ class PlayViewController: UIViewController , MapDelegate,ADBannerViewDelegate, C
         else if(missedDistance > 0){
             emoji = "😌"
         }
+    
         return emoji
-
     }
+    
+    
     
     func showAnswer(completion: (() -> (Void)))
     {
@@ -427,7 +576,7 @@ class PlayViewController: UIViewController , MapDelegate,ADBannerViewDelegate, C
     var questionindex = 0
     func startGame()
     {
-        questonsLeft = GlobalConstants.numberOfQuestionsForChallenge
+        //questonsLeft = //GlobalConstants.numberOfQuestionsForChallenge
         setNextQuestion()
     }
     
@@ -444,6 +593,7 @@ class PlayViewController: UIViewController , MapDelegate,ADBannerViewDelegate, C
             if challenge.questionIds.count > 0
             {
                 let questionID = challenge.questionIds.removeLast()
+                print("questionID to fetch \(questionID)")
                 currentQuestion = datactrl.fetchQuestion(questionID)
             }
             else
@@ -521,8 +671,9 @@ class PlayViewController: UIViewController , MapDelegate,ADBannerViewDelegate, C
     {
         if gametype != GameType.training
         {
+            let questionsLeftOfChallenge = challenge.questionIds.count + 1
             let questionsLeft = UILabel(frame: CGRectMake(clock!.frame.minX, clock!.frame.minY, clock!.frame.width, clock!.frame.height * 0.66))
-            questionsLeft.text = questonsLeft <= 1 ? "Last" : "\(questonsLeft)"
+            questionsLeft.text = questionsLeftOfChallenge <= 1 ? "Last" : "\(questionsLeftOfChallenge)"
             questionsLeft.font = UIFont.boldSystemFontOfSize(50)
             questionsLeft.textAlignment = NSTextAlignment.Center
             questionsLeft.adjustsFontSizeToFitWidth = true
@@ -530,7 +681,7 @@ class PlayViewController: UIViewController , MapDelegate,ADBannerViewDelegate, C
             self.view.addSubview(questionsLeft)
             
             let textLeft = UILabel(frame: CGRectMake(questionsLeft.frame.minX, questionsLeft.frame.maxY, questionsLeft.frame.width, clock!.frame.height * 0.33))
-            textLeft.text = questonsLeft <= 1 ? "question" : "questions\nleft"
+            textLeft.text = questionsLeftOfChallenge <= 1 ? "question" : "questions\nleft"
             textLeft.font = UIFont.boldSystemFontOfSize(20)
             textLeft.textAlignment = NSTextAlignment.Center
             textLeft.numberOfLines = 2
@@ -545,7 +696,7 @@ class PlayViewController: UIViewController , MapDelegate,ADBannerViewDelegate, C
                 }, completion: { (value: Bool) in
                     questionsLeft.removeFromSuperview()
                     textLeft.removeFromSuperview()
-                    self.questonsLeft!--
+                    //self.questonsLeft!--
             })
         }
     }
@@ -823,7 +974,11 @@ class PlayViewController: UIViewController , MapDelegate,ADBannerViewDelegate, C
         if (segue.identifier == "segueFromPlayToFinished") {
             let svc = segue!.destinationViewController as! FinishedViewController
 
-            svc.userFbId = myIdAndName.0
+            if gametype == GameType.makingChallenge || gametype == GameType.takingChallenge
+            {
+                svc.userFbId = myIdAndName.0
+            }
+
             svc.distance = self.distanceView.distance
             svc.gametype = gametype
             svc.challenge = challenge

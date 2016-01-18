@@ -164,9 +164,13 @@ class CoordinateHelper {
             CGPoint washington = CGPointMake(-77.033333,38.883333);
             float distanceTest = [self HaversineCalulationDistance:washington andPost2:oslo];
             */
+            
+
             if placeType == PlaceType.City || placeType == PlaceType.UnDefPlace || placeType == PlaceType.Mountain
             {
-                let pointKmRadiusWindow = 50
+                //this value is just roughly right
+                let convertedPointWithRadius:CGPoint = self.convertPointToLatLong(CGPointMake(point1.x + GlobalConstants.pointPerfectWindowOutlineRadius,point1.y + GlobalConstants.pointPerfectWindowOutlineRadius))
+                let pointKmRadiusWindow = Int(self.haversineCalulationDistance(convertedPoint1,pos2: convertedPointWithRadius))
                 let newDistance = lrintf(Float(distance)) - pointKmRadiusWindow
                 return newDistance < 0 ? 0 : newDistance
             }
@@ -174,11 +178,48 @@ class CoordinateHelper {
             {
                 return lrintf(Float(distance))
             }
+
         }
         else
         {
             return 0
         }
+    }
+    
+    func isInsideWindowRadius(playerPoint:CGPoint, mapCordsNearestPoint:CGPoint?, radius:CGFloat) -> Bool
+    {
+        if let centerPoint = mapCordsNearestPoint
+        {
+            return isPointInCircle(centerPoint,radius: radius,pointToTest: playerPoint)
+        }
+        else
+        {
+            return false
+        }
+        
+    }
+    
+    //used by isInsideWindowRadius
+    func isInRectangle(centerPoint:CGPoint, radius:CGFloat, pointToTest:CGPoint) -> Bool
+    {
+        return pointToTest.x >= centerPoint.x - radius && pointToTest.x <= centerPoint.x + radius &&
+            pointToTest.y >= centerPoint.y - radius && pointToTest.y <= centerPoint.y + radius;
+    }
+
+    //used by isInsideWindowRadius
+    func isPointInCircle(centerPoint:CGPoint, radius:CGFloat, pointToTest:CGPoint) -> Bool
+    {
+        if(isInRectangle(centerPoint, radius: radius, pointToTest: pointToTest))
+        {
+            var dx:CGFloat = centerPoint.x - pointToTest.x;
+            var dy:CGFloat = centerPoint.y - pointToTest.y;
+            dx *= dx;
+            dy *= dy;
+            let distanceSquared:CGFloat = dx + dy;
+            let radiusSquared:CGFloat = radius * radius;
+            return distanceSquared <= radiusSquared;
+        }
+        return false;
     }
     
     func halfwayPoint(point1: CGPoint, point2:CGPoint) -> CGPoint

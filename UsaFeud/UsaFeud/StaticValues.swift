@@ -61,13 +61,17 @@ struct GlobalConstants {
     static let playerSymbolName = "crosshair4.png"
     static let playerSymbolNameInMagnify = "crosshair.png"
     
-    static let maxKmBetweenLinePoints = 400
+    static let maxKmBetweenLinePoints = 100
+    
+    //These values are in pixels
+    static let pointPerfectWindowOutlineRadius:CGFloat = 6
+    static let pointOkWindowOutlineRadius:CGFloat = 500//250
 }
 
 
 enum GameType: Int
 {
-    case training = 0, makingChallenge = 1, takingChallenge = 2
+    case training = 0, makingChallenge = 1, takingChallenge = 2, badgeChallenge = 3
 }
 
 enum PlaceType: Int

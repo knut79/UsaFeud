@@ -38,15 +38,28 @@ class TileContainerOverlayLayer: CALayer {
         CGContextSetLineCap(ctx, CGLineCap.Round)
         CGContextSetLineJoin(ctx, CGLineJoin.Round)
         CGContextSetRGBStrokeColor(ctx, 1, 1, 1, 1)
+        
+
+        if fromPoint != nil && toPoint != nil
+        {
+            drawLine(ctx)
+            //drawPlayerSymbol(ctx)
+            //save before setting mask so we can draw upon mask after drawing places
+            drawNearestPointWindowOutline(ctx)
+            
+            CGContextSaveGState(ctx)
+        }
+        
+        //Set fill color
         if toPoint == nil
         {
             //correct region placement
-            CGContextSetFillColorWithColor(ctx, UIColor.greenColor().CGColor)
+            CGContextSetFillColorWithColor(ctx, UIColor.greenColor().colorWithAlphaComponent(0.9).CGColor)
             
         }
         else
         {
-            CGContextSetFillColorWithColor(ctx, UIColor.redColor().CGColor)
+            CGContextSetFillColorWithColor(ctx, UIColor.redColor().colorWithAlphaComponent(0.9).CGColor)
         }
         
         
@@ -58,15 +71,8 @@ class TileContainerOverlayLayer: CALayer {
                 CGContextSetFillColorWithColor(ctx, UIColor.blueColor().CGColor)
             }
         }
-
-        if fromPoint != nil && toPoint != nil
-        {
-            drawLine(ctx)
-            //drawPlayerSymbol(ctx)
-            //save before setting mask so we can draw upon mask after drawing places
-            CGContextSaveGState(ctx)
-        }
-
+        
+        
         if regions.count == 1 && regions[0].count == 1
         {
             drawPoint(ctx)
@@ -76,18 +82,13 @@ class TileContainerOverlayLayer: CALayer {
             
             drawMask(ctx)
             drawPlace(ctx)
-            /*
-            CGContextSetFillColorWithColor(ctx, UIColor.greenColor().colorWithAlphaComponent(0.5).CGColor)
-            
-            //TODO ... if you want to scale a path ... do this and use midpoint in regular scale ... and extract new midpoint of the ofset scaled path
-            drawPlace(ctx,scaleAll:  1.25)
-            */
         }
         
         
         if fromPoint != nil && toPoint != nil
         {
             CGContextRestoreGState (ctx)
+
             drawPlayerSymbol(ctx)
         }
 
@@ -159,10 +160,35 @@ class TileContainerOverlayLayer: CALayer {
     func drawPoint(context:CGContext)
     {
         let point = regions[0][0]
-        CGContextAddArc(context, CGFloat(point.x) * (resolutionPercentage / 100.0), CGFloat(point.y) * (resolutionPercentage / 100.0), 4, 0.0, CGFloat(M_PI * 2.0), 1)
+        CGContextAddArc(context, CGFloat(point.x) * (resolutionPercentage / 100.0), CGFloat(point.y) * (resolutionPercentage / 100.0), GlobalConstants.pointPerfectWindowOutlineRadius * (resolutionPercentage / 100.0), 0.0, CGFloat(M_PI * 2.0), 1)
 
-        CGContextStrokePath(context);
+        CGContextStrokePath(context)
     }
+    
+    func drawNearestPointWindowOutline(context:CGContext)
+    {
+        if let point = toPoint
+        {
+            //if inside window -- green
+            CGContextSetStrokeColorWithColor(context, UIColor.greenColor().CGColor)
+            CGContextSetFillColorWithColor(context, UIColor.greenColor().colorWithAlphaComponent(0.1).CGColor)
+            //if outside window -- red
+            CGContextSetStrokeColorWithColor(context, UIColor.redColor().CGColor)
+            CGContextSetFillColorWithColor(context, UIColor.redColor().colorWithAlphaComponent(0.1).CGColor)
+            
+            
+            CGContextAddArc(context, CGFloat(point.x) * (resolutionPercentage / 100.0), CGFloat(point.y) * (resolutionPercentage / 100.0), GlobalConstants.pointOkWindowOutlineRadius * (resolutionPercentage / 100.0), 0.0, CGFloat(M_PI * 2.0), 1)
+        
+            //CGContextStrokePath(context)
+            CGContextDrawPath(context, CGPathDrawingMode.EOFillStroke)
+            
+            
+            CGContextSetRGBStrokeColor(context, 1, 1, 1, 1)
+        }
+        
+        
+    }
+    
     
     func drawLine(context:CGContext)
     {
@@ -194,7 +220,7 @@ class TileContainerOverlayLayer: CALayer {
 
     }
     
-    func drawPlace(context:CGContext, scaleAll:CGFloat = 1.0)
+    func drawPlace(context:CGContext)
     {
         
         for lines in regions
@@ -206,13 +232,13 @@ class TileContainerOverlayLayer: CALayer {
             
             
             let firstPoint = lines[0]
-            CGPathMoveToPoint(pathRef,nil, CGFloat(firstPoint.x) * (resolutionPercentage / 100.0) * scaleAll , CGFloat(firstPoint.y) * (resolutionPercentage / 100.0) * scaleAll )
+            CGPathMoveToPoint(pathRef,nil, CGFloat(firstPoint.x) * (resolutionPercentage / 100.0) , CGFloat(firstPoint.y) * (resolutionPercentage / 100.0) )
             
             for var i = 1 ; i < lines.count ; i++
             {
                 let line = lines[i] //as! LinePoint
                 //print("x \(line.x)  y \(line.y)")
-                CGPathAddLineToPoint(pathRef, nil, CGFloat(line.x) * (resolutionPercentage / 100.0) * scaleAll , CGFloat(line.y) * (resolutionPercentage / 100.0) * scaleAll)
+                CGPathAddLineToPoint(pathRef, nil, CGFloat(line.x) * (resolutionPercentage / 100.0)  , CGFloat(line.y) * (resolutionPercentage / 100.0) )
                 //CGContextAddLineToPoint(context, CGFloat(line.x) * (resolutionPercentage / 100.0) * zoomScale, CGFloat(line.y) * (resolutionPercentage / 100.0) * zoomScale)
             }
             
@@ -251,6 +277,8 @@ class TileContainerOverlayLayer: CALayer {
 
         CGContextEOFillPath(context)
     }
+    
+
     
     func drawTest(context:CGContext )
     {

@@ -46,6 +46,60 @@ class Place: NSManagedObject {
             return sortedArray
         }
     }
+ 
+    /*
+    
+    var sortedPointsExpandedObsoete:[CGPoint]
+        {
+        get{
+            
+            let expandFactor = GlobalConstants.placeWindowExpandFactor
+            let sortedArray = sortedPoints
+            var nonPositionedExpandedPointsArray:[CGPoint] = []
+            var minOrgX:CGFloat = GlobalConstants.constMapWidth
+            var maxOrgX:CGFloat = 0
+            var minOrgY:CGFloat = GlobalConstants.constMapHeight
+            var maxOrgY:CGFloat = 0
+            
+            //can expand out of map bounds
+            var minExpandedX:CGFloat = GlobalConstants.constMapWidth * 2
+            var maxExpandedX:CGFloat = 0
+            var minExpandedY:CGFloat = GlobalConstants.constMapHeight * 2
+            var maxExpandedY:CGFloat = 0
+            
+            for item in sortedArray
+            {
+                minOrgX = CGFloat(item.x) < minOrgX ? CGFloat(item.x) : minOrgX
+                maxOrgX = CGFloat(item.x) > maxOrgX ? CGFloat(item.x) : maxOrgX
+                minOrgY = CGFloat(item.y) < minOrgY ? CGFloat(item.y) : minOrgY
+                maxOrgY = CGFloat(item.y) > maxOrgY ? CGFloat(item.y) : maxOrgY
+                let expandedPoint = CGPointMake(CGFloat(item.x) * expandFactor, CGFloat(item.y) * expandFactor)
+                minExpandedX = expandedPoint.x < minExpandedX ? expandedPoint.x : minExpandedX
+                maxExpandedX = expandedPoint.x > maxExpandedX ? expandedPoint.x : maxExpandedX
+                minExpandedY = expandedPoint.y < minExpandedY ? expandedPoint.y : minExpandedY
+                maxExpandedY = expandedPoint.y > maxExpandedY ? expandedPoint.y : maxExpandedY
+                nonPositionedExpandedPointsArray.append(expandedPoint)
+            }
+            
+            let centerPointOriginal = CGPointMake((minOrgX + maxOrgX) / 2, (minOrgY + maxOrgY) / 2)
+            let centerPointExpanded = CGPointMake((minExpandedX + maxExpandedX) / 2, (minExpandedY + maxExpandedY) / 2)
+            
+            let clicksToMoveXCoordinate = centerPointExpanded.x - centerPointOriginal.x
+            let clicksToMoveYCoordinate = centerPointExpanded.y - centerPointOriginal.y
+            
+            var positionedExpandedPointsArray:[CGPoint] = []
+            for item in nonPositionedExpandedPointsArray
+            {
+                let positionedPoint = CGPointMake(item.x - clicksToMoveXCoordinate, item.y - clicksToMoveYCoordinate)
+                positionedExpandedPointsArray.append(positionedPoint)
+            }
+            
+
+            return positionedExpandedPointsArray
+            
+        }
+    
+    }*/
 }
 
 extension Place {

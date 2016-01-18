@@ -59,6 +59,12 @@ class DistanceView: UIView {
     }
     
 
+    func forceHide()
+    {
+        distanceLabel.text = ""
+        distanceLabel.alpha = 0
+    }
+    
 
     func isVisible() -> Bool
     {

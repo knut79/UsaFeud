@@ -15,6 +15,7 @@ class MenuButton:UIButton {
     var badgeLabel:UILabel!
     var borderView:UIView!
     var orgCenter:CGPoint!
+    var title:String!
     
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
@@ -25,7 +26,7 @@ class MenuButton:UIButton {
 
         self.backgroundColor = UIColor.whiteColor()
 
-        
+        self.title = title
         let borderMargin = frame.height * 0.05
         borderView = UIView(frame: CGRectMake(borderMargin, borderMargin, frame.width - (borderMargin * 2), frame.height * 0.9))
         borderView.backgroundColor = UIColor.clearColor()
@@ -64,6 +65,20 @@ class MenuButton:UIButton {
         badgeLabel.alpha = 0
         self.addSubview(badgeLabel)
         
+    }
+    
+    func setDisabled()
+    {
+        label.backgroundColor = UIColor.grayColor()
+        borderView.layer.borderColor = UIColor.grayColor().CGColor
+        label.text = "\(title) +"
+    }
+    
+    func setEnabled()
+    {
+        label.backgroundColor = UIColor.blueColor()
+        borderView.layer.borderColor = UIColor.blueColor().CGColor
+        label.text = title
     }
     
     func setbadge(badge:Int)

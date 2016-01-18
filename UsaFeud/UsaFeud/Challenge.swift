@@ -21,6 +21,39 @@ class Challenge {
     }
 }
 
+class BadgeChallenge: Challenge {
+
+    var image:UIImage!
+    var usingBorders:Int!
+    var distancePixelsWindow:CGFloat!
+    var won:Bool!
+    
+    init(title:String,image:String,questionIds:[String], border:Int = 0, distancePixelsWindow:CGFloat? = nil)
+    {
+        super.init()
+        
+        self.title = title
+        self.questionIds = questionIds
+        self.image = UIImage(named: image)
+        self.usingBorders = border
+        if distancePixelsWindow == nil
+        {
+            let defaultDistancePixelsWindow = GlobalConstants.pointOkWindowOutlineRadius
+            self.distancePixelsWindow = defaultDistancePixelsWindow
+        }
+        else
+        {
+            self.distancePixelsWindow = distancePixelsWindow
+        }
+        won = true
+    }
+    
+    func setComplete()
+    {
+        NSUserDefaults.standardUserDefaults().setBool(true, forKey: title)
+    }
+}
+
 class TakingChallenge: Challenge {
 
     var id:String!

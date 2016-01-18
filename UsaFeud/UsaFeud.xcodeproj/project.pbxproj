@@ -556,6 +556,9 @@
 		723DA4561C4017E3004CAA3B /* WestVirginiaFlag.png in Resources */ = {isa = PBXBuildFile; fileRef = 723DA4241C4017E3004CAA3B /* WestVirginiaFlag.png */; };
 		723DA4571C4017E3004CAA3B /* WisconsinFlag.png in Resources */ = {isa = PBXBuildFile; fileRef = 723DA4251C4017E3004CAA3B /* WisconsinFlag.png */; };
 		723DA4581C4017E3004CAA3B /* WyomingFlag.png in Resources */ = {isa = PBXBuildFile; fileRef = 723DA4261C4017E3004CAA3B /* WyomingFlag.png */; };
+		723DA45C1C427B5A004CAA3B /* testbadge.png in Resources */ = {isa = PBXBuildFile; fileRef = 723DA45B1C427B5A004CAA3B /* testbadge.png */; };
+		723DA45E1C42820A004CAA3B /* BadgeCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 723DA45D1C42820A004CAA3B /* BadgeCollectionView.swift */; };
+		723DA4601C4406F0004CAA3B /* BadgeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 723DA45F1C4406F0004CAA3B /* BadgeView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -1111,6 +1114,9 @@
 		723DA4241C4017E3004CAA3B /* WestVirginiaFlag.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = WestVirginiaFlag.png; sourceTree = "<group>"; };
 		723DA4251C4017E3004CAA3B /* WisconsinFlag.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = WisconsinFlag.png; sourceTree = "<group>"; };
 		723DA4261C4017E3004CAA3B /* WyomingFlag.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = WyomingFlag.png; sourceTree = "<group>"; };
+		723DA45B1C427B5A004CAA3B /* testbadge.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = testbadge.png; sourceTree = "<group>"; };
+		723DA45D1C42820A004CAA3B /* BadgeCollectionView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BadgeCollectionView.swift; sourceTree = "<group>"; };
+		723DA45F1C4406F0004CAA3B /* BadgeView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BadgeView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -1298,6 +1304,8 @@
 				720A8D241C2B886D00A53B87 /* StatusTimeButton.swift */,
 				720A8D251C2B886D00A53B87 /* StatusDistanceButton.swift */,
 				720A8D261C2B886D00A53B87 /* ChallengeButton.swift */,
+				723DA45D1C42820A004CAA3B /* BadgeCollectionView.swift */,
+				723DA45F1C4406F0004CAA3B /* BadgeView.swift */,
 			);
 			name = MainMenu;
 			sourceTree = "<group>";
@@ -1362,6 +1370,7 @@
 		720A8D311C2B888E00A53B87 /* GameGraphics */ = {
 			isa = PBXGroup;
 			children = (
+				723DA45B1C427B5A004CAA3B /* testbadge.png */,
 				723DA3EB1C3029E1004CAA3B /* crosshair3.png */,
 				723DA0951C3026F2004CAA3B /* crosshair4.png */,
 				723DA0931C3026DC004CAA3B /* crosshair2.png */,
@@ -1960,6 +1969,7 @@
 				723DA3BD1C302872004CAA3B /* usa_100_17_2.jpg in Resources */,
 				723DA3A41C302872004CAA3B /* usa_100_15_9.jpg in Resources */,
 				723DA37F1C302872004CAA3B /* usa_100_13_4.jpg in Resources */,
+				723DA45C1C427B5A004CAA3B /* testbadge.png in Resources */,
 				723DA3A61C302872004CAA3B /* usa_100_15_11.jpg in Resources */,
 				723DA1541C30283F004CAA3B /* usa_50_7_1.jpg in Resources */,
 				723DA3DA1C302872004CAA3B /* usa_100_18_15.jpg in Resources */,
@@ -2422,9 +2432,11 @@
 				720A8D2F1C2B886D00A53B87 /* ChallengeButton.swift in Sources */,
 				720A8D2B1C2B886D00A53B87 /* MenuButton.swift in Sources */,
 				720A8CD51C2B875C00A53B87 /* ResultMapViewController.swift in Sources */,
+				723DA4601C4406F0004CAA3B /* BadgeView.swift in Sources */,
 				720A8D421C2B89C200A53B87 /* DataHandler.swift in Sources */,
 				720A8D111C2B881900A53B87 /* RangeSliderThumbLayer.swift in Sources */,
 				720A8CFA1C2B87D900A53B87 /* TileContainerView.swift in Sources */,
+				723DA45E1C42820A004CAA3B /* BadgeCollectionView.swift in Sources */,
 				720A8CFC1C2B87D900A53B87 /* PlayerIconView.swift in Sources */,
 				720A8D2A1C2B886D00A53B87 /* StatsView.swift in Sources */,
 				720A8CF61C2B87D900A53B87 /* ClockView.swift in Sources */,

@@ -12,7 +12,7 @@ import UIKit
 
 protocol MapDelegate
 {
-    func finishedAnimatingAnswer(distance:Int)
+    func finishedAnimatingAnswer(distance:Int,insidePerfectWindow:Bool,insideOkWindow:Bool)
 }
 
 
@@ -32,6 +32,9 @@ class MapScrollView:UIView, UIScrollViewDelegate  {
     var drawBorders:Bool = false
     let coordinateHelper = CoordinateHelper()
     
+    var pixelOkWindow:CGFloat!
+    var pixelPerfectWindow:CGFloat!
+    
     var delegate:MapDelegate?
     
     required init?(coder aDecoder: NSCoder) {
@@ -40,11 +43,13 @@ class MapScrollView:UIView, UIScrollViewDelegate  {
         
     }
     
-    init(frame: CGRect, drawBorders:Bool = false) {
+    init(frame: CGRect, drawBorders:Bool = false, okWindow:CGFloat = GlobalConstants.pointOkWindowOutlineRadius, perfectWindow:CGFloat = GlobalConstants.pointPerfectWindowOutlineRadius) {
         super.init(frame: frame)
         self.drawBorders = drawBorders
         tileContainerView = TileContainerView(frame: CGRectZero)
 
+        pixelOkWindow = okWindow
+        pixelPerfectWindow = perfectWindow
         //overlayDrawView.backgroundColor = UIColor.clearColor()
         
 /*
@@ -169,10 +174,23 @@ class MapScrollView:UIView, UIScrollViewDelegate  {
         overlayDrawView?.fromPoint = realMapCordsPlayerPoint
         overlayDrawView?.toPoint = realMapCordsNearestPoint
         
-        let distance:Int = coordinateHelper.getDistanceInKm(realMapCordsPlayerPoint, point2: realMapCordsNearestPoint, placeType: PlaceType(rawValue: Int(place.type))!)
+        let placeType = PlaceType(rawValue: Int(place.type))!
+        let distance:Int = coordinateHelper.getDistanceInKm(realMapCordsPlayerPoint, point2: realMapCordsNearestPoint, placeType: placeType)
 
+        //TODO --- check if realMapCordsPlayerPoint is inside of realMapCordsNearestPoint window radius
+        var insidePerfectWindow = distance <= 0
+        if placeType == PlaceType.City || placeType == PlaceType.UnDefPlace || placeType == PlaceType.Mountain
+        {
+            insidePerfectWindow = coordinateHelper.isInsideWindowRadius(realMapCordsPlayerPoint, mapCordsNearestPoint: realMapCordsNearestPoint, radius: pixelPerfectWindow)
+        }
+        let insideOkWindow = coordinateHelper.isInsideWindowRadius(realMapCordsPlayerPoint, mapCordsNearestPoint: realMapCordsNearestPoint, radius: pixelOkWindow)
         
-        delegate?.finishedAnimatingAnswer(distance)
+        print("inside ok window \(insideOkWindow)")
+        print("inside perfect window \(insidePerfectWindow)")
+        
+        
+        //Really messy code :( . insideX parameters is exclusivly used to handle badgeChallenges
+        delegate?.finishedAnimatingAnswer(distance,insidePerfectWindow: insidePerfectWindow,insideOkWindow: insideOkWindow)
     }
     
     func drawLineToPlace(place:Place)
@@ -224,6 +242,7 @@ class MapScrollView:UIView, UIScrollViewDelegate  {
     
     var overlayDrawView:TileContainerOverlayLayer?
     var placesToDraw:[[LinePoint]] = []
+    //TODO_? handle excludedAreas for place distancewindow ( 
     var placesToExcludeDraw:[[LinePoint]] = []
     var placeTypeToDraw:PlaceType?
     func drawPlace(place:Place)
@@ -235,6 +254,7 @@ class MapScrollView:UIView, UIScrollViewDelegate  {
         
         placesToDraw = []
         placesToDraw.append(place.sortedPoints)
+        placesToExcludeDraw = []
         let includedPlaces = datactrl.fetchPlaces(place.includePlaces)
         if let ips = includedPlaces
         {
@@ -558,20 +578,12 @@ class MapScrollView:UIView, UIScrollViewDelegate  {
     
     let lock = NSLock()
     func scrollViewDidEndZooming(scrollView: UIScrollView, withView view: UIView?, atScale scale: CGFloat) {
-        
-        
         //print("zoomscale \(self.scrollView.zoomScale)")
         //print("zoomscale \(scale)")
-        
 
         //synchronized(lock) {
-            
-            
             self.updateResolution()
-        
         //}
-        
-        
 
     }
     
