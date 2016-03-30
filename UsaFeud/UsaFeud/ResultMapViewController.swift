@@ -23,7 +23,7 @@ class ResultMapViewController: UIViewController ,ResultMapInfoViewProtocol{
         
         map = ResultMapScrollView(frame: CGRectMake(0, 0, UIScreen.mainScreen().bounds.width, mapHeight))
 
-        let singleTapGestureRecognizer = UITapGestureRecognizer(target: self, action: "tapMap:")
+        let singleTapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(ResultMapViewController.tapMap(_:)))
         singleTapGestureRecognizer.numberOfTapsRequired = 1
         singleTapGestureRecognizer.enabled = true
         singleTapGestureRecognizer.cancelsTouchesInView = false
@@ -39,7 +39,7 @@ class ResultMapViewController: UIViewController ,ResultMapInfoViewProtocol{
         backButton.layer.cornerRadius = backButton.frame.height / 2
         backButton.layer.masksToBounds = true
         backButton.setTitle("🔙", forState: UIControlState.Normal)
-        backButton.addTarget(self, action: "backAction", forControlEvents: UIControlEvents.TouchUpInside)
+        backButton.addTarget(self, action: #selector(ResultMapViewController.backAction), forControlEvents: UIControlEvents.TouchUpInside)
         view.addSubview(backButton)
         
         infoView = ResultMapInfoView(frame: CGRectMake(0, 0, self.view.frame.width * 0.5, self.view.frame.height * 0.4))

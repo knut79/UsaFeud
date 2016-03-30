@@ -40,7 +40,7 @@ class CheckItemView: UIView
         {
             checkBoxView.setTitle("◽️", forState: UIControlState.Normal)
         }
-        checkBoxView.addTarget(self, action: "toggleSelect:", forControlEvents: UIControlEvents.TouchUpInside)
+        checkBoxView.addTarget(self, action: #selector(CheckItemView.toggleSelect(_:)), forControlEvents: UIControlEvents.TouchUpInside)
         
         self.addSubview(checkBoxView)
         
@@ -49,7 +49,7 @@ class CheckItemView: UIView
         titleLabel = UILabel(frame: CGRectMake(checkBoxView.frame.maxX, 0, frame.width * 0.66, frame.height))
         titleLabel.adjustsFontSizeToFitWidth = true
         titleLabel.userInteractionEnabled = true
-        let singleTapGestureRecognizer = UITapGestureRecognizer(target: self, action: "toggleSelect:")
+        let singleTapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(CheckItemView.toggleSelect(_:)))
         singleTapGestureRecognizer.numberOfTapsRequired = 1
         singleTapGestureRecognizer.enabled = true
         singleTapGestureRecognizer.cancelsTouchesInView = false

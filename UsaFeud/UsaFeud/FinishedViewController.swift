@@ -35,7 +35,7 @@ class FinishedViewController:UIViewController {
         self.client = (UIApplication.sharedApplication().delegate as! AppDelegate).client
         
         backToMenuButton = UIButton(frame:CGRectMake((UIScreen.mainScreen().bounds.size.width / 2) - (elementWidth / 2), UIScreen.mainScreen().bounds.size.height - margin - elementHeight, elementWidth , elementHeight))
-        backToMenuButton.addTarget(self, action: "backToMenuAction", forControlEvents: UIControlEvents.TouchUpInside)
+        backToMenuButton.addTarget(self, action: #selector(FinishedViewController.backToMenuAction), forControlEvents: UIControlEvents.TouchUpInside)
         backToMenuButton.backgroundColor = UIColor.blueColor()
         backToMenuButton.layer.cornerRadius = 5
         backToMenuButton.layer.masksToBounds = true

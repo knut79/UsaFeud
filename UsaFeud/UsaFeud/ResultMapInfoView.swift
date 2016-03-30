@@ -42,7 +42,7 @@ class ResultMapInfoView: UIView
         
         closeButton = UIButton(frame: CGRectMake(insideView.bounds.width - 40, 0, 40, 40))
         closeButton.setTitle("❌", forState: UIControlState.Normal)
-        closeButton.addTarget(self, action: "closeAction", forControlEvents: UIControlEvents.TouchUpInside)
+        closeButton.addTarget(self, action: #selector(ResultMapInfoView.closeAction), forControlEvents: UIControlEvents.TouchUpInside)
         
         
         titleText = UILabel(frame: CGRectMake(0, 0, insideView.bounds.width, insideView.bounds.height * 0.2))

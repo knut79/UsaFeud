@@ -52,7 +52,7 @@ class BadgeCollectionView: UIView, BadgeChallengeProtocol {
         let badgeHeight = (self.bounds.height * 0.5) - (marginBetweenBadges * (badgesOnColumn - 1)) - (marginTopBottom * 2)
         
 
-        let singleTapGestureRecognizer = UITapGestureRecognizer(target: self, action: "mapAction:")
+        let singleTapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(BadgeCollectionView.mapAction(_:)))
         singleTapGestureRecognizer.numberOfTapsRequired = 1
         singleTapGestureRecognizer.enabled = true
         singleTapGestureRecognizer.cancelsTouchesInView = false

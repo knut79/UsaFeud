@@ -54,7 +54,7 @@ class ResultItemView: UIView,UIGestureRecognizerDelegate
         self.addSubview(borderBackgroudView)
         
         
-        let singleTapGestureRecognizer = UITapGestureRecognizer(target: self, action: "tapForDetails:")
+        let singleTapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(ResultItemView.tapForDetails(_:)))
         singleTapGestureRecognizer.numberOfTapsRequired = 1
         singleTapGestureRecognizer.enabled = true
         singleTapGestureRecognizer.delegate = self

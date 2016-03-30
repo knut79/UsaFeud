@@ -33,7 +33,7 @@ class BadgeView: UIView, UIAlertViewDelegate {
         
         self.title = title
         
-        let singleTapGestureRecognizer = UITapGestureRecognizer(target: self, action: "tapBadge:")
+        let singleTapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(BadgeView.tapBadge(_:)))
         singleTapGestureRecognizer.numberOfTapsRequired = 1
         singleTapGestureRecognizer.enabled = true
         singleTapGestureRecognizer.cancelsTouchesInView = false
@@ -79,15 +79,17 @@ class BadgeView: UIView, UIAlertViewDelegate {
     }
     
     
-    func shuffle<C: MutableCollectionType where C.Index == Int>(var list: C) -> C {
+    func shuffle<C: MutableCollectionType where C.Index == Int>( list: C) -> C
+    {
+        var listMutable = list
         let ecount = list.count
         for i in 0..<(ecount - 1) {
             let j = Int(arc4random_uniform(UInt32(ecount - i))) + i
             if j != i {
-                swap(&list[i], &list[j])
+                swap(&listMutable[i], &listMutable[j])
             }
         }
-        return list
+        return listMutable
     }
     
 }

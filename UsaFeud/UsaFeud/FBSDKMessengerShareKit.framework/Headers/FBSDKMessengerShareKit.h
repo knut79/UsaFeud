@@ -16,11 +16,16 @@
 // IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN
 // CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
-#import <Foundation/Foundation.h>
+#import <UIKit/UIKit.h>
 
-#import "FBSDKAccessToken.h"
-#import "FBSDKAccessTokenCaching.h"
+#define FBSDK_MESSENGER_SHARE_KIT_VERSION @"1.3.2"
 
-@interface FBSDKAccessTokenCacheV4 : NSObject<FBSDKAccessTokenCaching>
-
-@end
+#import "FBSDKMessengerContext.h"
+#import "FBSDKMessengerSharer.h"
+#import "FBSDKMessengerURLHandler.h"
+#import "FBSDKMessengerURLHandlerReplyContext.h"
+#import "FBSDKMessengerURLHandlerOpenFromComposerContext.h"
+#import "FBSDKMessengerButton.h"
+#import "FBSDKMessengerURLHandlerCancelContext.h"
+#import "FBSDKMessengerShareOptions.h"
+#import "FBSDKMessengerBroadcastContext.h"

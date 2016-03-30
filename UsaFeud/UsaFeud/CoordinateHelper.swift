@@ -46,11 +46,10 @@ class CoordinateHelper {
         else
         {
         
-            var i = 0, j = 0
-            for j = 0; j < includedPointCollections.count; j++
+            for j in 0 ..< includedPointCollections.count
             {
                 let vertices = includedPointCollections[j]
-                for i = 0; i < vertices.count; i++
+                for i in 0 ..< vertices.count
                 {
                     if vertices[i].x < minX
                     {
@@ -298,7 +297,7 @@ extension CGPoint{
     {
         var nearestPoint:CGPoint?
         var nearestDistance:CGFloat = CGFloat.max
-        for var i = 0; i < vertices.count; i++
+        for i in 0 ..< vertices.count
         {
             let tempNearestDistance = self.distanceFromCGPoints(vertices[i])
             if tempNearestDistance < nearestDistance
@@ -314,11 +313,10 @@ extension CGPoint{
     {
         var nearestPoint:CGPoint?
         var nearestDistance:CGFloat = CGFloat.max
-        var i = 0, j = 0
-        for j = 0; j < verticesCollection.count; j++
+        for j in 0  ..< verticesCollection.count 
         {
             let vertices = verticesCollection[j]
-            for i = 0; i < vertices.count; i++
+            for i in 0  ..< vertices.count
             {
                 let tempNearestDistance = self.distanceFromCGPoints(vertices[i])
                 if tempNearestDistance < nearestDistance
@@ -331,13 +329,17 @@ extension CGPoint{
         return nearestPoint!
     }
     
-    func distanceFromCGPoints(p:CGPoint)->CGFloat{
+    func distanceFromCGPoints(p:CGPoint)->CGFloat
+    {
         return sqrt(pow(x - p.x,2)+pow(y - p.y,2));
     }
     
-    func isInsidePolygon(vertices:[CGPoint]) -> Bool {
-        var i = 0, j = 0, c = false, vi:CGPoint, vj:CGPoint
-        for (i = 0, j = vertices.count-1; i < vertices.count; j = i++) {
+    func isInsidePolygon(vertices:[CGPoint]) -> Bool
+    {
+        var j = vertices.count-1, c = false, vi:CGPoint, vj:CGPoint
+        for i in 0  ..< vertices.count 
+        {
+            j = i
             vi = vertices[i]
             vj = vertices[j]
             let par1 = vi.y > y
@@ -354,8 +356,8 @@ extension CGPoint{
     }
     
     func isInsidePolygons(verticesCollection:[[CGPoint]]) -> Bool {
-        var c = false, i = 0
-        for i = 0; i < verticesCollection.count; i++
+        var c = false
+        for i in 0  ..< verticesCollection.count
         {
             if self.isInsidePolygon(verticesCollection[i])
             {

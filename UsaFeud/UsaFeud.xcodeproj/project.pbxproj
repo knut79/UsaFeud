@@ -13,10 +13,7 @@
 		720A8CB71C2B861A00A53B87 /* UsaFeud.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 720A8CB51C2B861A00A53B87 /* UsaFeud.xcdatamodeld */; };
 		720A8CB91C2B861A00A53B87 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 720A8CB81C2B861A00A53B87 /* Assets.xcassets */; };
 		720A8CBC1C2B861A00A53B87 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 720A8CBA1C2B861A00A53B87 /* LaunchScreen.storyboard */; };
-		720A8CC71C2B871400A53B87 /* FBSDKShareKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 720A8CC61C2B871400A53B87 /* FBSDKShareKit.framework */; };
 		720A8CC91C2B871D00A53B87 /* WindowsAzureMessaging.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 720A8CC81C2B871D00A53B87 /* WindowsAzureMessaging.framework */; };
-		720A8CCB1C2B872600A53B87 /* FBSDKCoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 720A8CCA1C2B872600A53B87 /* FBSDKCoreKit.framework */; };
-		720A8CCD1C2B872D00A53B87 /* FBSDKLoginKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 720A8CCC1C2B872D00A53B87 /* FBSDKLoginKit.framework */; };
 		720A8CCF1C2B873800A53B87 /* WindowsAzureMobileServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 720A8CCE1C2B873800A53B87 /* WindowsAzureMobileServices.framework */; };
 		720A8CD51C2B875C00A53B87 /* ResultMapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 720A8CD11C2B875C00A53B87 /* ResultMapViewController.swift */; };
 		720A8CD61C2B875C00A53B87 /* ResultMapScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 720A8CD21C2B875C00A53B87 /* ResultMapScrollView.swift */; };
@@ -70,6 +67,7 @@
 		720A8D441C2B89CC00A53B87 /* Challenge.swift in Sources */ = {isa = PBXBuildFile; fileRef = 720A8D431C2B89CC00A53B87 /* Challenge.swift */; };
 		720A8D461C2B89E200A53B87 /* ReportErrorHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 720A8D451C2B89E200A53B87 /* ReportErrorHandler.swift */; };
 		720A8D481C2B89F900A53B87 /* StaticValues.swift in Sources */ = {isa = PBXBuildFile; fileRef = 720A8D471C2B89F900A53B87 /* StaticValues.swift */; };
+		7211B8D51CA8B638000D75A1 /* FBSDKMessengerShareKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7211B8D41CA8B638000D75A1 /* FBSDKMessengerShareKit.framework */; };
 		723DA0701C2E453B004CAA3B /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 723DA06F1C2E453B004CAA3B /* StoreKit.framework */; };
 		723DA0721C2E4A3D004CAA3B /* statesBackup_lowRes.txt in Resources */ = {isa = PBXBuildFile; fileRef = 723DA0711C2E4A3D004CAA3B /* statesBackup_lowRes.txt */; };
 		723DA0741C2E4ABE004CAA3B /* statesLowRes.txt in Resources */ = {isa = PBXBuildFile; fileRef = 723DA0731C2E4ABE004CAA3B /* statesLowRes.txt */; };
@@ -559,6 +557,10 @@
 		723DA45C1C427B5A004CAA3B /* testbadge.png in Resources */ = {isa = PBXBuildFile; fileRef = 723DA45B1C427B5A004CAA3B /* testbadge.png */; };
 		723DA45E1C42820A004CAA3B /* BadgeCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 723DA45D1C42820A004CAA3B /* BadgeCollectionView.swift */; };
 		723DA4601C4406F0004CAA3B /* BadgeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 723DA45F1C4406F0004CAA3B /* BadgeView.swift */; };
+		72A6D09B1CA7E91A001C957F /* FBSDKCoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 72A6D0981CA7E91A001C957F /* FBSDKCoreKit.framework */; };
+		72A6D09C1CA7E91A001C957F /* FBSDKLoginKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 72A6D0991CA7E91A001C957F /* FBSDKLoginKit.framework */; };
+		72A6D09D1CA7E91A001C957F /* FBSDKShareKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 72A6D09A1CA7E91A001C957F /* FBSDKShareKit.framework */; };
+		72A6D09F1CA7E924001C957F /* Bolts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 72A6D09E1CA7E924001C957F /* Bolts.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -570,10 +572,7 @@
 		720A8CB81C2B861A00A53B87 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		720A8CBB1C2B861A00A53B87 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		720A8CBD1C2B861A00A53B87 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		720A8CC61C2B871400A53B87 /* FBSDKShareKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FBSDKShareKit.framework; sourceTree = "<group>"; };
 		720A8CC81C2B871D00A53B87 /* WindowsAzureMessaging.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = WindowsAzureMessaging.framework; sourceTree = "<group>"; };
-		720A8CCA1C2B872600A53B87 /* FBSDKCoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FBSDKCoreKit.framework; sourceTree = "<group>"; };
-		720A8CCC1C2B872D00A53B87 /* FBSDKLoginKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FBSDKLoginKit.framework; sourceTree = "<group>"; };
 		720A8CCE1C2B873800A53B87 /* WindowsAzureMobileServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = WindowsAzureMobileServices.framework; sourceTree = "<group>"; };
 		720A8CD11C2B875C00A53B87 /* ResultMapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResultMapViewController.swift; sourceTree = "<group>"; };
 		720A8CD21C2B875C00A53B87 /* ResultMapScrollView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResultMapScrollView.swift; sourceTree = "<group>"; };
@@ -628,6 +627,7 @@
 		720A8D431C2B89CC00A53B87 /* Challenge.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Challenge.swift; sourceTree = "<group>"; };
 		720A8D451C2B89E200A53B87 /* ReportErrorHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReportErrorHandler.swift; sourceTree = "<group>"; };
 		720A8D471C2B89F900A53B87 /* StaticValues.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StaticValues.swift; sourceTree = "<group>"; };
+		7211B8D41CA8B638000D75A1 /* FBSDKMessengerShareKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FBSDKMessengerShareKit.framework; sourceTree = "<group>"; };
 		723DA06F1C2E453B004CAA3B /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
 		723DA0711C2E4A3D004CAA3B /* statesBackup_lowRes.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = statesBackup_lowRes.txt; sourceTree = "<group>"; };
 		723DA0731C2E4ABE004CAA3B /* statesLowRes.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = statesLowRes.txt; sourceTree = "<group>"; };
@@ -1117,6 +1117,10 @@
 		723DA45B1C427B5A004CAA3B /* testbadge.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = testbadge.png; sourceTree = "<group>"; };
 		723DA45D1C42820A004CAA3B /* BadgeCollectionView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BadgeCollectionView.swift; sourceTree = "<group>"; };
 		723DA45F1C4406F0004CAA3B /* BadgeView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BadgeView.swift; sourceTree = "<group>"; };
+		72A6D0981CA7E91A001C957F /* FBSDKCoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FBSDKCoreKit.framework; sourceTree = "<group>"; };
+		72A6D0991CA7E91A001C957F /* FBSDKLoginKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FBSDKLoginKit.framework; sourceTree = "<group>"; };
+		72A6D09A1CA7E91A001C957F /* FBSDKShareKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FBSDKShareKit.framework; sourceTree = "<group>"; };
+		72A6D09E1CA7E924001C957F /* Bolts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Bolts.framework; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -1125,11 +1129,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				723DA0701C2E453B004CAA3B /* StoreKit.framework in Frameworks */,
+				72A6D09B1CA7E91A001C957F /* FBSDKCoreKit.framework in Frameworks */,
+				72A6D09D1CA7E91A001C957F /* FBSDKShareKit.framework in Frameworks */,
+				72A6D09C1CA7E91A001C957F /* FBSDKLoginKit.framework in Frameworks */,
+				7211B8D51CA8B638000D75A1 /* FBSDKMessengerShareKit.framework in Frameworks */,
 				720A8CCF1C2B873800A53B87 /* WindowsAzureMobileServices.framework in Frameworks */,
-				720A8CC71C2B871400A53B87 /* FBSDKShareKit.framework in Frameworks */,
-				720A8CCB1C2B872600A53B87 /* FBSDKCoreKit.framework in Frameworks */,
-				720A8CCD1C2B872D00A53B87 /* FBSDKLoginKit.framework in Frameworks */,
 				720A8CC91C2B871D00A53B87 /* WindowsAzureMessaging.framework in Frameworks */,
+				72A6D09F1CA7E924001C957F /* Bolts.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1192,11 +1198,13 @@
 		720A8CC31C2B86E000A53B87 /* Framework */ = {
 			isa = PBXGroup;
 			children = (
+				7211B8D41CA8B638000D75A1 /* FBSDKMessengerShareKit.framework */,
+				72A6D09E1CA7E924001C957F /* Bolts.framework */,
+				72A6D0981CA7E91A001C957F /* FBSDKCoreKit.framework */,
+				72A6D0991CA7E91A001C957F /* FBSDKLoginKit.framework */,
+				72A6D09A1CA7E91A001C957F /* FBSDKShareKit.framework */,
 				720A8CCE1C2B873800A53B87 /* WindowsAzureMobileServices.framework */,
-				720A8CCC1C2B872D00A53B87 /* FBSDKLoginKit.framework */,
-				720A8CCA1C2B872600A53B87 /* FBSDKCoreKit.framework */,
 				720A8CC81C2B871D00A53B87 /* WindowsAzureMessaging.framework */,
-				720A8CC61C2B871400A53B87 /* FBSDKShareKit.framework */,
 			);
 			name = Framework;
 			sourceTree = "<group>";

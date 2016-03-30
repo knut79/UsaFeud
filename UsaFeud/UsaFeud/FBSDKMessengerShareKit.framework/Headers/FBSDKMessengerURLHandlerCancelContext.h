@@ -16,16 +16,16 @@
 // IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN
 // CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
-#import <Foundation/Foundation.h>
+#import <UIKit/UIKit.h>
 
-#import "FBSDKBridgeAPIRequest.h"
+#import "FBSDKMessengerContext.h"
 
-@interface FBSDKBridgeAPICrypto : NSObject
+/*!
+ @class FBSDKMessengerURLHandlerCancelContext
 
-+ (void)addCipherKeyToQueryParameters:(NSMutableDictionary *)queryParameters;
-+ (NSDictionary *)decryptResponseForRequest:(FBSDKBridgeAPIRequest *)request
-                            queryParameters:(NSDictionary *)queryParameters
-                                      error:(NSError *__autoreleasing *)errorRef;
-+ (void)reset;
+ @abstract
+ This object represents a user canceling out of a share flow in Messenger
+ */
+@interface FBSDKMessengerURLHandlerCancelContext : FBSDKMessengerContext
 
 @end

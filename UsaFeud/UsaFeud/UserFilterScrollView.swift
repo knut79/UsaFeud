@@ -54,7 +54,7 @@ class UserFilterScrollView: UIView , UIScrollViewDelegate, CheckItemProtocol{
         
         closeButton = UIButton(frame: CGRectMake(frame.width - 40, 0, 40, 40))
         closeButton.setTitle("❌", forState: UIControlState.Normal)
-        closeButton.addTarget(self, action: "closeAction", forControlEvents: UIControlEvents.TouchUpInside)
+        closeButton.addTarget(self, action: #selector(UserFilterScrollView.closeAction), forControlEvents: UIControlEvents.TouchUpInside)
         
         let itemheight:CGFloat = 40
         selectedInfoLabel = UILabel(frame: CGRectMake(0, 0, self.bounds.width, itemheight))
@@ -121,7 +121,7 @@ class UserFilterScrollView: UIView , UIScrollViewDelegate, CheckItemProtocol{
             tagItem.frame = CGRectMake(0, itemheight * i, self.frame.width, itemheight)
             if tagItem.checked
             {
-                itemsChecked++
+                itemsChecked += 1
             }
             contentHeight = tagItem.frame.maxY
             i++

@@ -45,7 +45,7 @@ class TagCheckView: UIView
         self.tagTitle = tagTitle
         titleLabel = UILabel(frame: CGRectMake(checkBoxView.frame.maxX, 0, frame.width * 0.66, frame.height))
         titleLabel.userInteractionEnabled = true
-        let singleTapGestureRecognizer = UITapGestureRecognizer(target: self, action: "toggleSelect:")
+        let singleTapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(TagCheckView.toggleSelect(_:)))
         singleTapGestureRecognizer.numberOfTapsRequired = 1
         singleTapGestureRecognizer.enabled = true
         singleTapGestureRecognizer.cancelsTouchesInView = false
@@ -55,7 +55,7 @@ class TagCheckView: UIView
         
         if enable
         {
-            checkBoxView.addTarget(self, action: "toggleSelect:", forControlEvents: UIControlEvents.TouchUpInside)
+            checkBoxView.addTarget(self, action: #selector(TagCheckView.toggleSelect(_:)), forControlEvents: UIControlEvents.TouchUpInside)
         }
         else
         {

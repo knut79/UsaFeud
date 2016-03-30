@@ -346,9 +346,9 @@ class MapScrollView:UIView, UIScrollViewDelegate  {
         let maxColumn:Int = Int(ceil(mapWith / maxTileSize))
         
 
-        for var row = minRow ; row < maxRow ; row++
+        for row in minRow  ..< maxRow 
         {
-            for var col = minColumn ; col < maxColumn ; col++
+            for col in minColumn  ..< maxColumn 
             {
                 let borderFix = drawBorders ? "border_" : ""
                 //let imageName = "usa_\(Int(resolutionPercentage))_\(borderFix)\(pictureCol)_\(row).jpg"
@@ -424,7 +424,7 @@ class MapScrollView:UIView, UIScrollViewDelegate  {
         var delta:Int = 0
         
         // check if we should decrease our resolution
-        for var thisResolution = minimumResolution; thisResolution < resolution; thisResolution++
+        for thisResolution in minimumResolution  ..< resolution 
         {
             let thisDelta:Int = thisResolution - resolution
             // we decrease resolution by 1 step if the zoom scale is <= 0.5 (= 2^-1); by 2 steps if <= 0.25 (= 2^-2), and so on
@@ -439,7 +439,7 @@ class MapScrollView:UIView, UIScrollViewDelegate  {
         // if we didn't decide to decrease the resolution, see if we should increase it
         if delta == 0
         {
-            for var thisResolution = maximumResolution; thisResolution > resolution; thisResolution--
+            for var thisResolution = maximumResolution ; thisResolution > resolution ; thisResolution -= 1
             {
                 let thisDelta:Int = thisResolution - resolution
                 // we increase by 1 step if the zoom scale is > 1 (= 2^0); by 2 steps if > 2 (= 2^1), and so on
@@ -532,9 +532,9 @@ class MapScrollView:UIView, UIScrollViewDelegate  {
         let minColumn = 0
         let maxRow:Int = Int(ceil(mapHeight / maxTileSize))
         let maxColumn:Int = Int(ceil(mapWith / maxTileSize))
-        for var row = minRow ; row < maxRow ; row++
+        for row in minRow  ..< maxRow 
         {
-            for var col = minColumn ; col < maxColumn ; col++
+            for col in minColumn  ..< maxColumn 
             {
 
                 if tileMatrixPool.count > row

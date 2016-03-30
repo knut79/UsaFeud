@@ -40,7 +40,7 @@ class ResultsScrollView: UIView , UIScrollViewDelegate, UserFilterViewProtocol{
         opponentsScoreLabel.textAlignment = NSTextAlignment.Center
         opponentsScoreLabel.text = "    Opponent  +👆"
         opponentsScoreLabel.userInteractionEnabled = true
-        let singleTapGestureRecognizer = UITapGestureRecognizer(target: self, action: "tapForOpponentFilter:")
+        let singleTapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(ResultsScrollView.tapForOpponentFilter(_:)))
         singleTapGestureRecognizer.numberOfTapsRequired = 1
         singleTapGestureRecognizer.enabled = true
         singleTapGestureRecognizer.cancelsTouchesInView = false
@@ -120,25 +120,28 @@ class ResultsScrollView: UIView , UIScrollViewDelegate, UserFilterViewProtocol{
         scrollView.addSubview(newItem)
     }
     
-    func layoutResult(var index:Int, var numItemsLayedOut:Int = 0, var contentHeight:CGFloat = 0)
+    func layoutResult(index:Int, numItemsLayedOut:Int = 0, contentHeight:CGFloat = 0)
     {
-        if items.count > index
+        var contentHeightMutable = contentHeight
+        var numItemsLayedOutMutable = numItemsLayedOut
+        var indexMutable = index
+        if items.count > indexMutable
         {
-            let item = items[index]
+            let item = items[indexMutable]
             if filteredUsers.contains(item.opponentFullName)
             {
-                item.frame = CGRectMake(0, item.frame.height * CGFloat(numItemsLayedOut), self.frame.width, item.frame.height)
+                item.frame = CGRectMake(0, item.frame.height * CGFloat(numItemsLayedOutMutable), self.frame.width, item.frame.height)
                 item.hidden = false
-                contentHeight = item.frame.maxY
-                numItemsLayedOut++
+                contentHeightMutable = item.frame.maxY
+                numItemsLayedOutMutable += 1
             }
             else
             {
                 item.hidden = true
                 
             }
-            index++
-            self.layoutResult(index,contentHeight: contentHeight,numItemsLayedOut:numItemsLayedOut)
+            indexMutable += 1
+            self.layoutResult(index,contentHeight: contentHeightMutable,numItemsLayedOut:numItemsLayedOutMutable)
             
         }
         else
@@ -227,11 +230,11 @@ class ResultsScrollView: UIView , UIScrollViewDelegate, UserFilterViewProtocol{
         {
             if item.stateWin == 1
             {
-                wins++
+                wins += 1
             }
             else if item.stateLoss == 1
             {
-                losses++
+                losses += 1
             }
         }
         let icon:String = {

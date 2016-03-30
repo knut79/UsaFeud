@@ -42,15 +42,15 @@ class StatsView: UIView {
         let labelWidth = self.bounds.width * 0.38
         
         hintsButton = StatusHintButton(frame: CGRectMake(0, 0, labelWidth, self.bounds.height))
-        hintsButton.addTarget(self, action: "addHints", forControlEvents: UIControlEvents.TouchUpInside)
+        hintsButton.addTarget(self, action: #selector(StatsView.addHints), forControlEvents: UIControlEvents.TouchUpInside)
         self.addSubview(hintsButton)
         
         timeButton = StatusTimeButton(frame: CGRectMake(hintsButton.frame.maxX, 0, labelWidth, self.bounds.height))
-        timeButton.addTarget(self, action: "addTime", forControlEvents: UIControlEvents.TouchUpInside)
+        timeButton.addTarget(self, action: #selector(StatsView.addTime), forControlEvents: UIControlEvents.TouchUpInside)
         self.addSubview(timeButton)
 
         distanceButton = StatusDistanceButton(frame: CGRectMake(timeButton.frame.maxX, 0, self.bounds.width - (labelWidth * 2), self.bounds.height))
-        distanceButton.addTarget(self, action: "switchDistance", forControlEvents: UIControlEvents.TouchUpInside)
+        distanceButton.addTarget(self, action: #selector(StatsView.switchDistance), forControlEvents: UIControlEvents.TouchUpInside)
         self.addSubview(distanceButton)
         
     }

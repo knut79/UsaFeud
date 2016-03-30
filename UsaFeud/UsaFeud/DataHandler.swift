@@ -157,7 +157,7 @@ class DataHandler
                                 
                                 
                                 
-                                for var i = 0 ; i < lines.count; i++
+                                for i in 0  ..< lines.count
                                 {
                                     let linePoint = LinePoint.createInManagedObjectContext(self.managedObjectContext, point: lines[i],sort:i)
                                     place.addLinePoint(linePoint)
@@ -352,15 +352,17 @@ class DataHandler
         questionItems = shuffle(questionItems)
     }
     
-    func shuffle<C: MutableCollectionType where C.Index == Int>(var list: C) -> C {
+    func shuffle<C: MutableCollectionType where C.Index == Int>(list: C) -> C
+    {
+        var listMutable = list
         let ecount = list.count
         for i in 0..<(ecount - 1) {
             let j = Int(arc4random_uniform(UInt32(ecount - i))) + i
             if j != i {
-                swap(&list[i], &list[j])
+                swap(&listMutable[i], &listMutable[j])
             }
         }
-        return list
+        return listMutable
     }
 
 
@@ -381,7 +383,7 @@ class DataHandler
     func getXNumberOfQuestionIds(numQuestions:Int) -> [String]
     {
         var questionIds:[String] = []
-        for var i = 0 ; i < numQuestions ; i++
+        for i in 0  ..< numQuestions
         {
             questionIds.append(questionItems[i].uniqueId)
             //questionItems[i].

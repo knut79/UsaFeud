@@ -98,7 +98,7 @@ class PlayViewController: UIViewController , MapDelegate,ADBannerViewDelegate, C
         datactrl = (UIApplication.sharedApplication().delegate as! AppDelegate).datactrl
         
         
-        let singleTapGestureRecognizer = UITapGestureRecognizer(target: self, action: "tapMap:")
+        let singleTapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(PlayViewController.tapMap(_:)))
         singleTapGestureRecognizer.numberOfTapsRequired = 1
         singleTapGestureRecognizer.enabled = true
         singleTapGestureRecognizer.cancelsTouchesInView = false
@@ -160,20 +160,20 @@ class PlayViewController: UIViewController , MapDelegate,ADBannerViewDelegate, C
         
         hintButton = HintButton(frame: CGRectMake(0, 0, buttonSide, buttonSide))
         hintButton.center = CGPointMake(margin + (hintButton.frame.width / 2) , UIScreen.mainScreen().bounds.height * 0.33)
-        hintButton.addTarget(self, action: "useHintAction", forControlEvents: UIControlEvents.TouchUpInside)
+        hintButton.addTarget(self, action: #selector(PlayViewController.useHintAction), forControlEvents: UIControlEvents.TouchUpInside)
         self.view.addSubview(hintButton)
         hintButton.orgFrame = hintButton.frame
 
         let okButtonSide = buttonSide + margin
         okButton = OkButton(frame: CGRectMake(map.bounds.width - okButtonSide , map.bounds.height - okButtonSide , okButtonSide, okButtonSide),rightMargin: margin,bottomMargin: margin)
        // okButton.center = CGPointMake(map.bounds.width - (okButton.frame.width / 2) - margin , map.bounds.height - (okButton.frame.height / 2) - margin)
-        okButton.addTarget(self, action: "okAction", forControlEvents: UIControlEvents.TouchUpInside)
+        okButton.addTarget(self, action: #selector(PlayViewController.okAction), forControlEvents: UIControlEvents.TouchUpInside)
                 self.view.addSubview(okButton)
         okButton.orgFrame = okButton.frame
             
         nextButton = UIButton(frame: CGRectMake(0, 0, buttonSide, buttonSide))
         nextButton.center = CGPointMake(map.bounds.width - (nextButton.frame.width / 2) - margin , map.bounds.height - (nextButton.frame.height / 2) - margin)
-        nextButton.addTarget(self, action: "nextAction", forControlEvents: UIControlEvents.TouchUpInside)
+        nextButton.addTarget(self, action: #selector(PlayViewController.nextAction), forControlEvents: UIControlEvents.TouchUpInside)
         nextButton.setTitle("⏩", forState: UIControlState.Normal)
         nextButton.layer.borderColor = UIColor.lightGrayColor().CGColor
         nextButton.layer.borderWidth = 2
@@ -188,7 +188,7 @@ class PlayViewController: UIViewController , MapDelegate,ADBannerViewDelegate, C
         if gametype == GameType.training
         {
             backButton = UIButton(frame: CGRectMake(margin, map.bounds.maxY - buttonSide - margin, buttonSide, buttonSide))
-            backButton!.addTarget(self, action: "backAction", forControlEvents: UIControlEvents.TouchUpInside)
+            backButton!.addTarget(self, action: #selector(PlayViewController.backAction), forControlEvents: UIControlEvents.TouchUpInside)
             backButton!.setTitle("⏪", forState: UIControlState.Normal)
             backButton!.layer.borderColor = UIColor.lightGrayColor().CGColor
             backButton!.layer.borderWidth = 2
@@ -274,7 +274,7 @@ class PlayViewController: UIViewController , MapDelegate,ADBannerViewDelegate, C
         {
             if distance <= 0
             {
-                currentQuestion.rightAnsw++
+                currentQuestion.rightAnsw += 1
                 datactrl.save()
             }
         }
@@ -585,7 +585,7 @@ class PlayViewController: UIViewController , MapDelegate,ADBannerViewDelegate, C
         if self.gametype == GameType.training
         {
             currentQuestion = datactrl.questionItems[questionindex % datactrl.questionItems.count]
-            questionindex++
+            questionindex += 1
         }
         else
         {
@@ -628,7 +628,7 @@ class PlayViewController: UIViewController , MapDelegate,ADBannerViewDelegate, C
         
         let timeBonus = NSUserDefaults.standardUserDefaults().integerForKey("timeBonus")
         var time:Double = GlobalConstants.timeStart
-        for var i = 1 ; i <= timeBonus; i++
+        for _ in 1 ... timeBonus
         {
             time = time * GlobalConstants.timeBonusMultiplier
         }

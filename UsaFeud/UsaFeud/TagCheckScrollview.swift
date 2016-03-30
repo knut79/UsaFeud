@@ -44,7 +44,7 @@ class TagCheckScrollView: UIView , UIScrollViewDelegate, TagCheckItemProtocol{
         
         closeButton = UIButton(frame: CGRectMake(frame.width - 40, 0, 40, 40))
         closeButton.setTitle("❌", forState: UIControlState.Normal)
-        closeButton.addTarget(self, action: "closeAction", forControlEvents: UIControlEvents.TouchUpInside)
+        closeButton.addTarget(self, action: #selector(TagCheckScrollView.closeAction), forControlEvents: UIControlEvents.TouchUpInside)
         closeButton.layer.borderColor = UIColor.blackColor().CGColor
         closeButton.layer.borderWidth = 2.0
         

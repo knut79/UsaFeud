@@ -234,7 +234,7 @@ class TileContainerOverlayLayer: CALayer {
             let firstPoint = lines[0]
             CGPathMoveToPoint(pathRef,nil, CGFloat(firstPoint.x) * (resolutionPercentage / 100.0) , CGFloat(firstPoint.y) * (resolutionPercentage / 100.0) )
             
-            for var i = 1 ; i < lines.count ; i++
+            for i in 1  ..< lines.count 
             {
                 let line = lines[i] //as! LinePoint
                 //print("x \(line.x)  y \(line.y)")
@@ -257,7 +257,7 @@ class TileContainerOverlayLayer: CALayer {
 
             
             //CGContextMoveToPoint(context, CGFloat(firstPoint.x) * (resolutionPercentage / 100.0) * zoomScale, CGFloat(firstPoint.y) * (resolutionPercentage / 100.0) * zoomScale)
-            for var i = 1 ; i < lines.count ; i++
+            for i in 1  ..< lines.count 
             {
                 let line = lines[i] //as! LinePoint
                 //print("x \(line.x)  y \(line.y)")

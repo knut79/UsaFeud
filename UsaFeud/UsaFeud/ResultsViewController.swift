@@ -52,7 +52,7 @@ class ResultsViewController: UIViewController, FBSDKLoginButtonDelegate {
         backButton.layer.borderWidth = 2
         backButton.layer.cornerRadius = backButton.frame.height / 2
         backButton.setTitle("🔙", forState: UIControlState.Normal)
-        backButton.addTarget(self, action: "backAction", forControlEvents: UIControlEvents.TouchUpInside)
+        backButton.addTarget(self, action: #selector(ResultsViewController.backAction), forControlEvents: UIControlEvents.TouchUpInside)
         view.addSubview(backButton)
         
 
@@ -278,7 +278,7 @@ class ResultsViewController: UIViewController, FBSDKLoginButtonDelegate {
             if arrayOfValues.count >= minNumberOfItemsOnGamerecordRow
             {
                 let newRecord = oldNumerbOfRecords <= index
-                index++
+                index += 1
                 
                 let myDistance = NSNumberFormatter().numberFromString(arrayOfValues[0] )
                 var myDistanceRightMeasure =  usingKm ? myDistance!.integerValue : Int(CGFloat(myDistance!.integerValue) * 0.621371)

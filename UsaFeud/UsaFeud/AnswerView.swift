@@ -26,13 +26,13 @@ class AnswerView: UIView {
         self.backgroundColor = UIColor.clearColor()
 
         
-        let singleTapGestureRecognizer = UITapGestureRecognizer(target: self, action: "tapAnswer:")
+        let singleTapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(AnswerView.tapAnswer(_:)))
         singleTapGestureRecognizer.numberOfTapsRequired = 1
         singleTapGestureRecognizer.enabled = true
         singleTapGestureRecognizer.cancelsTouchesInView = false
         self.addGestureRecognizer(singleTapGestureRecognizer)
 
-        let swipeUpGestureRecognizer = UISwipeGestureRecognizer(target: self, action: "tapAnswer:")
+        let swipeUpGestureRecognizer = UISwipeGestureRecognizer(target: self, action: #selector(AnswerView.tapAnswer(_:)))
         swipeUpGestureRecognizer.direction = UISwipeGestureRecognizerDirection.Up
         swipeUpGestureRecognizer.enabled = true
         swipeUpGestureRecognizer.cancelsTouchesInView = false

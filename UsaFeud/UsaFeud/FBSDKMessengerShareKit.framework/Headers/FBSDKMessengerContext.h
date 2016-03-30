@@ -18,27 +18,11 @@
 
 #import <Foundation/Foundation.h>
 
-#import <FBSDKCoreKit/FBSDKMacros.h>
+/*!
+ @class FBSDKMessengerContext
 
-#import "FBSDKBridgeAPIProtocolType.h"
-
-@class FBSDKBridgeAPIRequest;
-
-FBSDK_EXTERN NSString *const FBSDKBridgeAPIAppIDKey;
-FBSDK_EXTERN NSString *const FBSDKBridgeAPISchemeSuffixKey;
-FBSDK_EXTERN NSString *const FBSDKBridgeAPIVersionKey;
-
-@protocol FBSDKBridgeAPIProtocol <NSObject>
-
-- (NSURL *)requestURLWithActionID:(NSString *)actionID
-                           scheme:(NSString *)scheme
-                       methodName:(NSString *)methodName
-                    methodVersion:(NSString *)methodVersion
-                       parameters:(NSDictionary *)parameters
-                            error:(NSError *__autoreleasing *)errorRef;
-- (NSDictionary *)responseParametersForActionID:(NSString *)actionID
-                                queryParameters:(NSDictionary *)queryParameters
-                                      cancelled:(BOOL *)cancelledRef
-                                          error:(NSError *__autoreleasing *)errorRef;
-
+ @abstract
+ This represents the way that content is shared between Messenger and partner apps.
+ */
+@interface FBSDKMessengerContext : NSObject <NSSecureCoding>
 @end

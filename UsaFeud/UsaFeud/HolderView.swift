@@ -80,14 +80,8 @@ class HolderView: UIView {
 
     box.layer.anchorPoint = CGPointMake(0.5, 0.6)
 
-
-
-    NSTimer.scheduledTimerWithTimeInterval(0.45, target: self,
-      selector: "drawRedAnimatedRectangle",
-      userInfo: nil, repeats: false)
-    NSTimer.scheduledTimerWithTimeInterval(0.65, target: self,
-      selector: "drawBlueAnimatedRectangle",
-      userInfo: nil, repeats: false)
+    NSTimer.scheduledTimerWithTimeInterval(0.45, target: self,selector: #selector(HolderView.drawRedAnimatedRectangle), userInfo: nil, repeats: false)
+    NSTimer.scheduledTimerWithTimeInterval(0.65, target: self, selector: #selector(HolderView.drawBlueAnimatedRectangle),userInfo: nil, repeats: false)
   }
 
   func drawRedAnimatedRectangle() {
@@ -98,12 +92,8 @@ class HolderView: UIView {
   func drawBlueAnimatedRectangle() {
     box.layer.addSublayer(blueRectangleLayer)
     blueRectangleLayer.animateStrokeWithColor(Colors.white)
-    
-    
 
-    
-    NSTimer.scheduledTimerWithTimeInterval(0.40, target: self, selector: "drawArc",
-      userInfo: nil, repeats: false)
+    NSTimer.scheduledTimerWithTimeInterval(0.40, target: self, selector: #selector(HolderView.drawArc), userInfo: nil, repeats: false)
   }
 
   func drawArc() {
@@ -138,7 +128,7 @@ class HolderView: UIView {
 
 
     
-    NSTimer.scheduledTimerWithTimeInterval(0.90, target: self, selector: "expandView",
+    NSTimer.scheduledTimerWithTimeInterval(0.90, target: self, selector: #selector(HolderView.expandView),
       userInfo: nil, repeats: false)
   }
 

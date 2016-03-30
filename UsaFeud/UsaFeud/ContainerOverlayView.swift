@@ -179,7 +179,7 @@ class ContainerOverlayLayer: CALayer {
             let firstPoint = lines[0]
             CGPathMoveToPoint(pathRef,nil, CGFloat(firstPoint.x * 0.25), CGFloat(firstPoint.y * 0.25) )
             
-            for var i = 1 ; i < lines.count ; i++
+            for i in 1  ..< lines.count 
             {
                 let line = lines[i]
                 //if i % 3 == 0

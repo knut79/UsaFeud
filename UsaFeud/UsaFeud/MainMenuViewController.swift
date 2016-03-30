@@ -75,9 +75,12 @@ class MainMenuViewController: UIViewController, TagCheckViewProtocol , ADBannerV
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        //REMOVE BEFORE RELEASE
+        NSUserDefaults.standardUserDefaults().setBool(true, forKey: "adFree")
+        
         
         NSNotificationCenter.defaultCenter().removeObserver(self, name: UIApplicationWillEnterForegroundNotification, object: nil)
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: "enterForground", name: UIApplicationWillEnterForegroundNotification, object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(MainMenuViewController.enterForground), name: UIApplicationWillEnterForegroundNotification, object: nil)
 
         let firstLaunch = NSUserDefaults.standardUserDefaults().boolForKey("firstlaunch")
 
@@ -89,18 +92,18 @@ class MainMenuViewController: UIViewController, TagCheckViewProtocol , ADBannerV
         let buttonWidth = UIScreen.mainScreen().bounds.size.width * 0.65
         
         challengeUsersButton = MenuButton(frame:CGRectMake((UIScreen.mainScreen().bounds.size.width / 2) - (buttonWidth / 2), UIScreen.mainScreen().bounds.size.height * 0.33, buttonWidth, buttonHeight),title:"Challenge")
-        challengeUsersButton.addTarget(self, action: "challengeAction", forControlEvents: UIControlEvents.TouchUpInside)
+        challengeUsersButton.addTarget(self, action: #selector(MainMenuViewController.challengeAction), forControlEvents: UIControlEvents.TouchUpInside)
         let challengeBadge = NSUserDefaults.standardUserDefaults().integerForKey("challengesBadge")
         challengeUsersButton.setbadge(challengeBadge)
         challengeUsersButton.alpha = 0
         
         
         practiceButton = MenuButton(frame:CGRectMake(challengeUsersButton.frame.minX, challengeUsersButton.frame.maxY + marginButtons, buttonWidth, buttonHeight),title:"Practice")
-        practiceButton.addTarget(self, action: "practiceAction", forControlEvents: UIControlEvents.TouchUpInside)
+        practiceButton.addTarget(self, action: #selector(MainMenuViewController.practiceAction), forControlEvents: UIControlEvents.TouchUpInside)
         practiceButton.alpha = 0
         
         resultsButton = MenuButton(frame:CGRectMake(practiceButton.frame.minX, practiceButton.frame.maxY + marginButtons, buttonWidth, buttonHeight),title:"Results")
-        resultsButton.addTarget(self, action: "resultChallengeAction", forControlEvents: UIControlEvents.TouchUpInside)
+        resultsButton.addTarget(self, action: #selector(MainMenuViewController.resultChallengeAction), forControlEvents: UIControlEvents.TouchUpInside)
         let resultsBadge = NSUserDefaults.standardUserDefaults().integerForKey("resultsBadge")
         resultsButton.setbadge(resultsBadge)
         resultsButton.alpha = 0
@@ -139,11 +142,11 @@ class MainMenuViewController: UIViewController, TagCheckViewProtocol , ADBannerV
         let buttonMargin: CGFloat = 20.0
         
         newChallengeButton = ChallengeButton(frame:CGRectMake((UIScreen.mainScreen().bounds.size.width / 2) - ( buttonWidth / 2), (UIScreen.mainScreen().bounds.size.height / 2) -  buttonHeight - (buttonMargin / 2),buttonWidth, buttonHeight),title: "Make new")
-        newChallengeButton.addTarget(self, action: "newChallengeAction", forControlEvents: UIControlEvents.TouchUpInside)
+        newChallengeButton.addTarget(self, action: #selector(MainMenuViewController.newChallengeAction), forControlEvents: UIControlEvents.TouchUpInside)
         newChallengeButton.alpha = 0
         
         pendingChallengesButton = ChallengeButton(frame:CGRectMake(self.newChallengeButton.frame.minX, self.newChallengeButton.frame.maxY + buttonMargin, buttonWidth, buttonHeight),title: "Take pending")
-        pendingChallengesButton.addTarget(self, action: "pendingChallengesAction", forControlEvents: UIControlEvents.TouchUpInside)
+        pendingChallengesButton.addTarget(self, action: #selector(MainMenuViewController.pendingChallengesAction), forControlEvents: UIControlEvents.TouchUpInside)
         pendingChallengesButton.setbadge(challengeBadge)
         pendingChallengesButton.alpha = 0
         
@@ -152,7 +155,7 @@ class MainMenuViewController: UIViewController, TagCheckViewProtocol , ADBannerV
         
         practicePlayButton = UIButton(frame:CGRectZero)
         practicePlayButton.setTitle("Practice", forState: UIControlState.Normal)
-        practicePlayButton.addTarget(self, action: "playPracticeAction", forControlEvents: UIControlEvents.TouchUpInside)
+        practicePlayButton.addTarget(self, action: #selector(MainMenuViewController.playPracticeAction), forControlEvents: UIControlEvents.TouchUpInside)
         practicePlayButton.backgroundColor = UIColor.blueColor()
         practicePlayButton.layer.cornerRadius = 5
         practicePlayButton.layer.masksToBounds = true
@@ -161,7 +164,7 @@ class MainMenuViewController: UIViewController, TagCheckViewProtocol , ADBannerV
         challengePlayButton.setTitle("New challenge\n\(numOfQuestionsForRound) questions", forState: UIControlState.Normal)
         challengePlayButton.titleLabel?.textAlignment = NSTextAlignment.Center
         challengePlayButton.titleLabel!.numberOfLines = 2
-        challengePlayButton.addTarget(self, action: "playNewChallengeAction", forControlEvents: UIControlEvents.TouchUpInside)
+        challengePlayButton.addTarget(self, action: #selector(MainMenuViewController.playNewChallengeAction), forControlEvents: UIControlEvents.TouchUpInside)
         challengePlayButton.backgroundColor = UIColor.blueColor()
         challengePlayButton.layer.cornerRadius = 5
         challengePlayButton.layer.masksToBounds = true
@@ -183,7 +186,7 @@ class MainMenuViewController: UIViewController, TagCheckViewProtocol , ADBannerV
         practicePlayButton.addSubview(practicePlayButtonExstraLabel)
 
         
-        levelSlider.addTarget(self, action: "rangeSliderValueChanged:", forControlEvents: .ValueChanged)
+        levelSlider.addTarget(self, action: #selector(MainMenuViewController.rangeSliderValueChanged(_:)), forControlEvents: .ValueChanged)
         levelSlider.curvaceousness = 0.0
         levelSlider.maximumValue = Double(GlobalConstants.maxLevel) + 0.5
         levelSlider.minimumValue = Double(GlobalConstants.minLevel)
@@ -194,7 +197,7 @@ class MainMenuViewController: UIViewController, TagCheckViewProtocol , ADBannerV
         
         borderSwitch = UISwitch(frame: CGRectZero)
         borderSwitch.on = false
-        borderSwitch.addTarget(self, action: "borderStateChanged:", forControlEvents: UIControlEvents.TouchUpInside)
+        borderSwitch.addTarget(self, action: #selector(MainMenuViewController.borderStateChanged(_:)), forControlEvents: UIControlEvents.TouchUpInside)
         borderSwitch.alpha = 0
         
         borderSwitchLabel = UILabel(frame: CGRectZero)
@@ -208,7 +211,7 @@ class MainMenuViewController: UIViewController, TagCheckViewProtocol , ADBannerV
         selectFilterTypeButton = UIButton(frame: CGRectZero)
         selectFilterTypeButton.setTitle("📋", forState: UIControlState.Normal)
         selectFilterTypeButton.layer.borderColor = UIColor.blueColor().CGColor
-        selectFilterTypeButton.addTarget(self, action: "openFilterList", forControlEvents: UIControlEvents.TouchUpInside)
+        selectFilterTypeButton.addTarget(self, action: #selector(MainMenuViewController.openFilterList), forControlEvents: UIControlEvents.TouchUpInside)
         selectFilterTypeButton.backgroundColor = UIColor.whiteColor().colorWithAlphaComponent(0)
         
         let backButtonMargin:CGFloat = 10
@@ -220,7 +223,7 @@ class MainMenuViewController: UIViewController, TagCheckViewProtocol , ADBannerV
         backButton.layer.cornerRadius = backButton.frame.height / 2
         backButton.layer.masksToBounds = true
         backButton.setTitle("🔙", forState: UIControlState.Normal)
-        backButton.addTarget(self, action: "backAction", forControlEvents: UIControlEvents.TouchUpInside)
+        backButton.addTarget(self, action: #selector(MainMenuViewController.backAction), forControlEvents: UIControlEvents.TouchUpInside)
         view.addSubview(backButton)
  
         practicePlayButton.alpha = 0
@@ -976,7 +979,7 @@ class MainMenuViewController: UIViewController, TagCheckViewProtocol , ADBannerV
                     if hints >= GlobalConstants.hintCostForTimeBonus
                     {
                         
-                        timeBonus++
+                        timeBonus += 1
                         hints = hints - GlobalConstants.hintCostForTimeBonus
                         self.statsView.timeButton.sTime(timeBonus)
                         self.statsView.hintsButton.sHints(hints)

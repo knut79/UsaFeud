@@ -10,11 +10,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "UsaFeud/MainMenuViewController.swift"
-            timestampString = "474726154.687422"
+            timestampString = "480818097.479704"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "631"
-            endingLineNumber = "631"
+            startingLineNumber = "634"
+            endingLineNumber = "634"
             landmarkName = "practiceAction()"
             landmarkType = "5">
          </BreakpointContent>
@@ -22,16 +22,16 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "UsaFeud/MainMenuViewController.swift"
-            timestampString = "474728926.888801"
+            timestampString = "480818097.479704"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "1148"
-            endingLineNumber = "1148"
-            landmarkName = "removeAds()"
+            startingLineNumber = "1151"
+            endingLineNumber = "1151"
+            landmarkName = "recieveNumberOfResultsNotDownloaded()"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>

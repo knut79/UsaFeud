@@ -32,7 +32,7 @@ class QuestionView: UIView {
         questionText.font = UIFont.boldSystemFontOfSize(24)
         questionText.textColor = UIColor.whiteColor()
         questionText.userInteractionEnabled = true
-        let singleTapGestureRecognizerText = UITapGestureRecognizer(target: self, action: "tapQuestion:")
+        let singleTapGestureRecognizerText = UITapGestureRecognizer(target: self, action: #selector(QuestionView.tapQuestion(_:)))
         singleTapGestureRecognizerText.numberOfTapsRequired = 1
         singleTapGestureRecognizerText.enabled = true
         singleTapGestureRecognizerText.cancelsTouchesInView = false
@@ -43,13 +43,13 @@ class QuestionView: UIView {
         imageView.layer.borderWidth = 0.5
         imageView.layer.borderColor = UIColor.lightGrayColor().CGColor
         imageView.userInteractionEnabled = true
-        let singleTapGestureRecognizerImage = UITapGestureRecognizer(target: self, action: "tapFlag:")
+        let singleTapGestureRecognizerImage = UITapGestureRecognizer(target: self, action: #selector(QuestionView.tapFlag(_:)))
         singleTapGestureRecognizerImage.numberOfTapsRequired = 1
         singleTapGestureRecognizerImage.enabled = true
         singleTapGestureRecognizerImage.cancelsTouchesInView = false
         imageView.addGestureRecognizer(singleTapGestureRecognizerImage)
         
-        let swipeUpGestureRecognizer = UISwipeGestureRecognizer(target: self, action: "tapFlag:")
+        let swipeUpGestureRecognizer = UISwipeGestureRecognizer(target: self, action: #selector(QuestionView.tapFlag(_:)))
         swipeUpGestureRecognizer.direction = UISwipeGestureRecognizerDirection.Up
         swipeUpGestureRecognizer.enabled = true
         swipeUpGestureRecognizer.cancelsTouchesInView = false

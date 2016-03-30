@@ -119,7 +119,7 @@ class UserScrollView: UIView , UIScrollViewDelegate, CheckItemProtocol{
             tagItem.frame = CGRectMake(0, itemheight * i, self.frame.width, itemheight)
             if tagItem.checked
             {
-                itemsChecked++
+                itemsChecked += 1
             }
             contentHeight = tagItem.frame.maxY
             i++

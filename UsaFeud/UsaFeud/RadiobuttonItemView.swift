@@ -33,7 +33,7 @@ class RadiobuttonItemView: UIView
         self.checked = false
         radiobutton = UIButton(frame: CGRectMake(0, 0, frame.width * 0.33, frame.height))
         radiobutton.setTitle("⚪️", forState: UIControlState.Normal)
-        radiobutton.addTarget(self, action: "toggleSelect:", forControlEvents: UIControlEvents.TouchUpInside)
+        radiobutton.addTarget(self, action: #selector(RadiobuttonItemView.toggleSelect(_:)), forControlEvents: UIControlEvents.TouchUpInside)
         
         self.addSubview(radiobutton)
         
@@ -42,7 +42,7 @@ class RadiobuttonItemView: UIView
         titleLabel = UILabel(frame: CGRectMake(radiobutton.frame.maxX, 0, frame.width * 0.66, frame.height))
         titleLabel.adjustsFontSizeToFitWidth = true
         titleLabel.userInteractionEnabled = true
-        let singleTapGestureRecognizer = UITapGestureRecognizer(target: self, action: "toggleSelect:")
+        let singleTapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(RadiobuttonItemView.toggleSelect(_:)))
         singleTapGestureRecognizer.numberOfTapsRequired = 1
         singleTapGestureRecognizer.enabled = true
         singleTapGestureRecognizer.cancelsTouchesInView = false

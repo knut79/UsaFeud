@@ -64,9 +64,9 @@ class HintButton: UIButton {
     {
         
         hintsLeftOnAccount = NSUserDefaults.standardUserDefaults().integerForKey("hintsLeftOnAccount")
-        hintsLeftOnAccount--
+        hintsLeftOnAccount -= 1
         NSUserDefaults.standardUserDefaults().setInteger(hintsLeftOnAccount, forKey: "hintsLeftOnAccount")
-        hintsLeftOnQuestion--
+        hintsLeftOnQuestion -= 1
         let datactrl = (UIApplication.sharedApplication().delegate as! AppDelegate).datactrl
         datactrl.hintsValue = hintsLeftOnAccount
         datactrl.saveGameData()

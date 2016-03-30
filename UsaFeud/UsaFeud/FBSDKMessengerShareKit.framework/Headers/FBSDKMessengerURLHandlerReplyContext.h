@@ -17,31 +17,38 @@
 // CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
 #import <Foundation/Foundation.h>
-#import <UIKit/UIImage.h>
 
-@class FBSDKGraphRequestDataAttachment;
-@class FBSDKLogger;
+#import "FBSDKMessengerContext.h"
 
-@interface FBSDKGraphRequestBody : NSObject
+/*!
+ @class FBSDKMessengerURLHandlerReplyContext
 
-@property (nonatomic, retain, readonly) NSData *data;
+ @abstract
+ This object represents a user tapping reply from a message in Messenger. Passing
+ this context into a share method will trigger the reply flow
+ */
+@interface FBSDKMessengerURLHandlerReplyContext : FBSDKMessengerContext
 
-- (void)appendWithKey:(NSString *)key
-            formValue:(NSString *)value
-               logger:(FBSDKLogger *)logger;
+/*!
+ @abstract
+ Additional information that was passed along with the original media that was replied to
 
-- (void)appendWithKey:(NSString *)key
-           imageValue:(UIImage *)image
-               logger:(FBSDKLogger *)logger;
+ @discussion
+ If content shared to Messenger incuded metadata and the user replied to that message,
+ that metadata is passed along with the reply back to the app. If no metadata was included
+ this is nil
+ */
+@property (nonatomic, copy, readonly) NSString *metadata;
 
-- (void)appendWithKey:(NSString *)key
-            dataValue:(NSData *)data
-               logger:(FBSDKLogger *)logger;
+/*!
+ @abstract
+ The user IDs of the other participants on the thread.
 
-- (void)appendWithKey:(NSString *)key
-  dataAttachmentValue:(FBSDKGraphRequestDataAttachment *)dataAttachment
-               logger:(FBSDKLogger *)logger;
-
-+ (NSString *)mimeContentType;
+ @discussion
+ User IDs can be used with the Facebook SDK and Graph API (https://developers.facebook.com/docs/graph-api)
+ to query names, photos, and other data. This will only contain IDs of users that
+ have also logged into your app via their Facebook account.
+ */
+@property (nonatomic, copy, readonly) NSSet *userIDs;
 
 @end

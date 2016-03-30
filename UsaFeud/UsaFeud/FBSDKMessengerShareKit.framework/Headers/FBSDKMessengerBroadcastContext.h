@@ -16,24 +16,16 @@
 // IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN
 // CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
-#import <UIKit/UIKit.h>
+#import "FBSDKMessengerShareKit.h"
 
-@protocol FBSDKWebDialogViewDelegate;
+/*!
+ @class FBSDKMessengerBroadcastContext
 
-@interface FBSDKWebDialogView : UIView
-
-@property (nonatomic, assign) id<FBSDKWebDialogViewDelegate> delegate;
-
-- (void)loadURL:(NSURL *)URL;
-- (void)stopLoading;
-
-@end
-
-@protocol FBSDKWebDialogViewDelegate <NSObject>
-
-- (void)webDialogView:(FBSDKWebDialogView *)webDialogView didCompleteWithResults:(NSDictionary *)results;
-- (void)webDialogView:(FBSDKWebDialogView *)webDialogView didFailWithError:(NSError *)error;
-- (void)webDialogViewDidCancel:(FBSDKWebDialogView *)webDialogView;
-- (void)webDialogViewDidFinishLoad:(FBSDKWebDialogView *)webDialogView;
+ @abstract
+ This object is used as an override in FBSDKMessengerShareOptions to ensure
+ the broadcast flow in Messenger is triggered, even if your app was entered from
+ a flow that normally triggers the Messenger reply flow
+ */
+@interface FBSDKMessengerBroadcastContext : FBSDKMessengerContext
 
 @end

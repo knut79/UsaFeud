@@ -100,7 +100,7 @@ class ChallengeViewController:UIViewController,FBSDKLoginButtonDelegate, UserVie
         backButton.layer.cornerRadius = backButton.frame.height / 2
         backButton.layer.masksToBounds = true
         backButton.setTitle("🔙", forState: UIControlState.Normal)
-        backButton.addTarget(self, action: "backAction", forControlEvents: UIControlEvents.TouchUpInside)
+        backButton.addTarget(self, action: #selector(ChallengeViewController.backAction), forControlEvents: UIControlEvents.TouchUpInside)
         view.addSubview(backButton)
 
     }
@@ -250,10 +250,10 @@ class ChallengeViewController:UIViewController,FBSDKLoginButtonDelegate, UserVie
         titleLabel = UILabel(frame: CGRectMake((UIScreen.mainScreen().bounds.size.width / 2) - (elementWidth / 2), margin, elementWidth, elementHeight))
         titleLabel.textAlignment = NSTextAlignment.Center
         titleLabel.font = UIFont.boldSystemFontOfSize(24)
-        
+        titleLabel.adjustsFontSizeToFitWidth = true        
         
         self.playButton = UIButton(frame:CGRectMake(titleLabel.frame.minX, UIScreen.mainScreen().bounds.size.height - margin - elementHeight, elementWidth , elementHeight))
-        self.playButton.addTarget(self, action: "playAction", forControlEvents: UIControlEvents.TouchUpInside)
+        self.playButton.addTarget(self, action: #selector(ChallengeViewController.playAction), forControlEvents: UIControlEvents.TouchUpInside)
         self.playButton.backgroundColor = UIColor.blueColor()
         self.playButton.layer.cornerRadius = 5
         self.playButton.layer.masksToBounds = true
@@ -316,7 +316,7 @@ class ChallengeViewController:UIViewController,FBSDKLoginButtonDelegate, UserVie
         
         
         let content = FBSDKShareLinkContent()
-        content.contentURL = NSURL(string: "https://itunes.apple.com/no/app/year-feud/id1050347083?mt=8")
+        content.contentURL = NSURL(string: "https://itunes.apple.com/no/app/geo-feud/id1054226772?mt=8")
         content.imageURL = NSURL(string: "https://fbcdn-photos-h-a.akamaihd.net/hphotos-ak-xtp1/t39.2081-0/p128x128/12057212_936552496419899_597891191_n.png")
         content.contentDescription = "Test this iOS geography game"
         content.contentTitle = "Map feud"
@@ -332,7 +332,7 @@ class ChallengeViewController:UIViewController,FBSDKLoginButtonDelegate, UserVie
         inviteFriendsButton.setTitle("Invite friends", forState: UIControlState.Normal)
         
         addRandomUserButton = UIButton(frame:CGRectMake(titleLabel.frame.minX, playButton.frame.minY - margin - elementHeight, elementWidth , elementHeight))
-        self.addRandomUserButton.addTarget(self, action: "addRandomUserAction", forControlEvents: UIControlEvents.TouchUpInside)
+        self.addRandomUserButton.addTarget(self, action: #selector(ChallengeViewController.addRandomUserAction), forControlEvents: UIControlEvents.TouchUpInside)
         self.addRandomUserButton.backgroundColor = UIColor.blueColor()
         self.addRandomUserButton.layer.cornerRadius = 5
         self.addRandomUserButton.layer.masksToBounds = true
@@ -507,12 +507,11 @@ class ChallengeViewController:UIViewController,FBSDKLoginButtonDelegate, UserVie
     func inviteFriendsAction()
     {
         let content = FBSDKShareLinkContent()
-        content.contentURL = NSURL(string: "https://itunes.apple.com/no/app/year-feud/id1050347083?mt=8")
+        content.contentURL = NSURL(string: "https://itunes.apple.com/no/app/geo-feud/id1054226772?mt=8")
         content.imageURL = NSURL(string: "https://itunes.apple.com/no/app/year-feud/id1050347083?mt=8")
         content.contentDescription = "bla bla description"
         content.contentTitle = "bla bla title"
-        //content.appInvitePreviewImageURL = NSURL(string: "https://itunes.apple.com/no/app/year-feud/id1050347083?mt=8")
-
+        
         let messageDialog = FBSDKMessageDialog()
         messageDialog.delegate = self
         messageDialog.shareContent = content
@@ -533,17 +532,7 @@ class ChallengeViewController:UIViewController,FBSDKLoginButtonDelegate, UserVie
             alert.show()
             
         }
-        
-        //FBSDKMessageDialog.showWithContent(content, delegate: self)
-        
-        //replace http:// with itms:// or itms-apps:// to avoid redirects.
-        /*
-        let content = FBSDKAppInviteContent()
-        //content.appLinkURL = NSURL(string: "itms-apps://itunes.apple.com/no/app/year-feud/id1050347083?mt=8")
-        content.appLinkURL = NSURL(string: "https://itunes.apple.com/no/app/year-feud/id1050347083?mt=8")
-        content.appInvitePreviewImageURL = NSURL(string: "https://itunes.apple.com/no/app/year-feud/id1050347083?mt=8")
-        FBSDKAppInviteDialog.showFromViewController(self, withContent: content, delegate: self) //.showWithContent(content, delegate: self)
-*/
+
     }
     
     func sharer(sharer: FBSDKSharing!, didCompleteWithResults results: [NSObject : AnyObject]!) {
@@ -574,7 +563,7 @@ class ChallengeViewController:UIViewController,FBSDKLoginButtonDelegate, UserVie
     {
         activityLabel.alpha = 1
         activityLabel.text = "Collecting random user..."
-        randomUsersAdded++
+        randomUsersAdded += 1
         if randomUsersAdded > 1
         {
             activityLabel.alpha = 0
